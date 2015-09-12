@@ -20,7 +20,9 @@ var ProfileAddDisplayHab = React.createClass({ // main component
         this.setState({data: data});
       }.bind(this),
       error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
+        console.error(this.props.url);
+        console.error(status);
+        console.log(err.toString());
       }.bind(this)
     });
   },

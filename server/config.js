@@ -5,6 +5,7 @@ module.exports = {
     // databaseURL: process.env.DATABASE_URL || 'postgres://localhost:5432/veeweeherman'
 
     // databaseURL: process.env.DATABASE_URL || 'postgres://localhost:5432/kmerino'
+  databaseURL: 'postgres://localhost:5432/kmerino'
 
     /* This is used for the PostGres DB server */
     /*
@@ -15,5 +16,5 @@ module.exports = {
     If the Heroku toolbelt and the PGAdmin are both installed, run the following to access the PG DB in ther terminal: 
       heroku pg:psql --app habitudein30
     */
-    databaseURL: process.env.DATABASE_URL || 'postgres://mlsnfeluxqiuff:9ChVkwF-1ypBrOsmB_kNV8rEDi@ec2-54-197-245-93.compute-1.amazonaws.com:5432/de5lornqrnncva'
+    // databaseURL: process.env.DATABASE_URL || 'postgres://mlsnfeluxqiuff:9ChVkwF-1ypBrOsmB_kNV8rEDi@ec2-54-197-245-93.compute-1.amazonaws.com:5432/de5lornqrnncva'
 };

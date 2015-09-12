@@ -62,15 +62,20 @@ module.exports = function(app){
 
   // SHOWS EXISTING USER HABITS
   app.get('/api/habits', function(req, res){
+    console.log('*************wtf')
    pg.connect(databaseURL, function(err, client, done){
-    var query = client.query('SELECT user_id, habit from habits');
+    console.log('*************wtf')
+    var query = client.query("SELECT user_id, habit, category FROM habits WHERE user_id = 2;");
+    // var query = client.query("SELECT location,username FROM users WHERE user_id = 4;")
     var rows = []; // Array to hold values returned from database
     
+      console.log('rows*******************',rows);
     if (err) {
       return console.error('error running query', err);
     }
     query.on('row', function(row) {
       rows.push(row);
+      
     });
     query.on('end', function(result) {
       client.end();
@@ -83,6 +88,8 @@ module.exports = function(app){
   // USER CREATES A NEW HABIT and inserts a null timestamp in updates table
   app.post('/api/habits', function(req, res){
     var habit = req.body.habit;
+    var category = req.body.category;
+    console.log('fucking category',category);
     pg.connect(databaseURL, function(err, client, done){
 
       // Currently we only post habits for user number 1: Later we will add multiple users
@@ -90,7 +97,7 @@ module.exports = function(app){
       var getIDQuery = "(SELECT DISTINCT habits.habit_id FROM habits " + 
        "WHERE habits.habit = '" + habit + "')"; 
 
-    var habitsQuery = client.query("INSERT INTO habits (user_id, habit) VALUES (" + 1 + ", '" + habit + "');" +
+    var habitsQuery = client.query("INSERT INTO habits (user_id, habit, category) VALUES (" + 1 + ", '" + habit + "','categoryAAA');" +
      "INSERT INTO updates (habit_id, update) " + 
      "VALUES (" + getIDQuery + " , current_timestamp - interval '100 years');");
 

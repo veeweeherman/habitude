@@ -18,6 +18,7 @@ var ProfileAddDisplayHab = React.createClass({ // main component
       cache: false,
       success: function(data) {
         this.setState({data: data});
+        
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(this.props.url, status, err.toString());
@@ -25,17 +26,25 @@ var ProfileAddDisplayHab = React.createClass({ // main component
     });
   },
 
-  handleHabitSubmit: function(habit) { // this is fired from the render function on render function of this component
+  handleHabitSubmit: function(habit,category) { // this is fired from the render function on render function of this component
+    
+    console.log('habit, catgeory',habit,category)
     var habits = this.state.data;
+    console.log('this.state',this.state)
     var newHabits = habits.concat([habit]);
+    // console.log('habit', habit)
+    // console.log('newHabits',newHabits)
     this.setState({data: newHabits});
+    // console.log('habits',habits)
     $.ajax({
       url: '/api/habits',
       dataType: 'json',
       type: 'POST',
       data: habit,
+      category: category,
       success: function(data) {
         this.setState({data: data});
+        console.log('data',data)
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(this.props.url, status, err.toString());
@@ -43,13 +52,15 @@ var ProfileAddDisplayHab = React.createClass({ // main component
     });
   },
   getInitialState: function() {
-    return {data: []};
+    console.log('initial state',this.state);
+    return {data: [], category: '' };
   },
   componentDidMount: function() {
     this.loadHabitsFromServer();
     setInterval(this.loadHabitsFromServer, this.props.pollInterval); // retrieves habits from db on interval
   },
   render: function() {
+    console.log('THIS STATE',this.state)
     return (
       <div className="habitBox">
       <h1>Habit Tracker</h1>
@@ -130,17 +141,17 @@ var HabitForm = React.createClass({ // form to enter new habits
   render: function() {
     return (
       <form className="habitForm" onSubmit={this.handleSubmit}>
-      <input type="text" placeholder="Enter text" ref="habit" />
-      <div>
-        <select name="Categories">
-        <option value="null">Please select a category for your new Habitude</option>
-          <option value="Health">Health</option>
-          <option value="Fitness">Fitness</option>
-          <option value="Addiction">Addiction</option>
-          <option value="Overall Cool Catness">Overall Cool Catness</option>
-        </select>
-      </div>
-      <input type="submit" value="Post" />
+        <input type="text" placeholder="Enter text" ref="habit" />
+        
+          <select name="Categories" id="newhabcat" ref="category">
+            <option value="null">Please select a category for your new Habitude</option>
+            <option value="Health">Health</option>
+            <option value="Fitness">Fitness</option>
+            <option value="Addiction">Addiction</option>
+            <option value="Overall Cool Catness">Overall Cool Catness</option>
+          </select>
+        
+        <input type="submit" value="Post" />
       </form>
       );
   }

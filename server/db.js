@@ -38,6 +38,7 @@ module.exports = function(app){
     });
   }); 
 
+<<<<<<< HEAD
 
   // SHOWS USER PROFILE
   app.get('/api/profile', function(req, res){

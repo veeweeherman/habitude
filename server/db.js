@@ -86,7 +86,7 @@ module.exports = function(app){
   app.post('/api/habits', function(req, res){
     var habit = req.body.habit;
     //*********************** NOTE: 'category' is currently hardcoded to be 'health'
-    var category = 'health';
+    var category = req.body.category;
     var user = 'rkelly'; 
     pg.connect(databaseURL, function(err, client, done){
 
@@ -227,7 +227,7 @@ module.exports = function(app){
 //VY AND GLENNs DB request for name and location
   app.get('/api/nameAndLoc', function(req, res) {
     pg.connect(databaseURL, function(err, client, done){      
-      var query = client.query("SELECT location,username FROM users WHERE user_id = 4;")
+      var query = client.query("SELECT location,username FROM users WHERE user_id = 1;")
       var rows = []; 
       if (err) {
         return console.error('error running query', err);

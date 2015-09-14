@@ -42,7 +42,8 @@ module.exports = function(app){
     var habit = req.body.habit;
     //*********************** NOTE: 'category' is currently hardcoded to be 'health'
     var category = req.body.category;
-    var user = 'R Kelly'; 
+    // UNCOMMENT THE LINE BELOW AND ADD THE USER FROM YOUR TEST DATABASE HERE
+    //var user = 'R Kelly'; 
     pg.connect(databaseURL, function(err, client, done){
 
       // Currently we only post habits for user number 1: Later we will add multiple users

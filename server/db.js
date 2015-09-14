@@ -135,29 +135,6 @@ module.exports = function(app){
          "WHERE habits.habit = '" + habit + "')";
         var query = client.query(" DELETE FROM updates WHERE habit_id = " + getIDQuery + "; " + 
        " DELETE FROM habits WHERE habit_id = " + getIDQuery + "; ");
-
-<<<<<<< HEAD
-      done();
-      var rows = [];
-
-      if(err){
-        return console.error('error inserting user', err);
-      }
-
-      query.on('row', function(row) {
-        rows.push(row);
-      });
-      query.on('end', function(result) {
-        client.end();
-        console.log('User should be deleted');
-        return res.json(rows);
-      });
-
-    });
-    });
-
-
-=======
         done();
         var rows = [];
 
@@ -176,7 +153,6 @@ module.exports = function(app){
 
       });
     });
->>>>>>> c18561e2a337d66f3f0163133312cd7df61f134a
 
 
 //VY AND GLENNs DB request for name and location
@@ -219,12 +195,8 @@ module.exports = function(app){
     });
   });
 
-<<<<<<< HEAD
-
-=======
->>>>>>> c18561e2a337d66f3f0163133312cd7df61f134a
 };
-
+// ******************DB TEST CODE***************************
     // app.get('/api/dbtestTablesExist', function(req, res) {
 
     //   pg.connect(databaseURL, function(err, client, done){
@@ -243,50 +215,6 @@ module.exports = function(app){
     //     });
     //   });
     // });
-<<<<<<< HEAD
-=======
-
-
-
-  //*************** CURRENTLY NOT USED *********************
-  // SHOWS USER PROFILE
-  // app.get('/api/profile', function(req, res){
-  //   pg.connect(databaseURL, function(err, client, done){
-  //     var query = client.query('SELECT * from users');
-  //     var rows = []; // Array to hold values returned from database
-  //     if (err) {
-  //       return console.error('error running query', err);
-  //     }
-  //     query.on('row', function(row) {
-  //       rows.push(row);
-  //     });
-  //     query.on('end', function(result) {
-  //       client.end();
-  //       return res.json(rows);    
-  //     });   
-  //   });
-  // });
- //  // SHOWS EXISTING USER HABITS
- //  app.get('/api/habits', function(req, res){
- //   pg.connect(databaseURL, function(err, client, done){
- //    var query = client.query('SELECT user_id, habit from habits');
- //    var rows = []; // Array to hold values returned from database
-    
- //    if (err) {
- //      return console.error('error running query', err);
- //    }
- //    query.on('row', function(row) {
- //      rows.push(row);
- //    });
- //    query.on('end', function(result) {
- //      client.end();
- //      return res.json(rows);
->>>>>>> c18561e2a337d66f3f0163133312cd7df61f134a
-
- //    });
- //  }); 
- // });
-
 
   //*************** CURRENTLY NOT USED *********************
   // SHOWS USER PROFILE

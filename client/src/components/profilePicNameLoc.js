@@ -5,7 +5,6 @@ var ProfilePicture = React.createClass({
   
   componentDidMount: function(x,y,z) {
 
-    var foo;
     $.ajax({
         type: 'GET',
         url: '/api/nameAndLoc', /* NEEDS THE GET REQUEST FOR USERNAME AND LOCATION */

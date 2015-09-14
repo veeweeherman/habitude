@@ -38,6 +38,7 @@ module.exports = function(app){
     });
   }); 
 
+<<<<<<< HEAD
 
   // SHOWS USER PROFILE
   app.get('/api/profile', function(req, res){
@@ -57,39 +58,48 @@ module.exports = function(app){
     });
   });
 
-  // SHOWS EXISTING USER HABITS
-  app.get('/api/habits', function(req, res){
-   pg.connect(databaseURL, function(err, client, done){
-    var query = client.query('SELECT user_id, habit from habits');
-    var rows = []; // Array to hold values returned from database
+  //*************** CURRENTLY NOT USED *********************
+ //  // SHOWS EXISTING USER HABITS
+ //  app.get('/api/habits', function(req, res){
+ //   pg.connect(databaseURL, function(err, client, done){
+ //    var query = client.query('SELECT user_id, habit from habits');
+ //    var rows = []; // Array to hold values returned from database
     
-    if (err) {
-      return console.error('error running query', err);
-    }
-    query.on('row', function(row) {
-      rows.push(row);
-    });
-    query.on('end', function(result) {
-      client.end();
-      return res.json(rows);
+ //    if (err) {
+ //      return console.error('error running query', err);
+ //    }
+ //    query.on('row', function(row) {
+ //      rows.push(row);
+ //    });
+ //    query.on('end', function(result) {
+ //      client.end();
+ //      return res.json(rows);
 
-    });
-  }); 
- });
+ //    });
+ //  }); 
+ // });
 
-  // USER CREATES A NEW HABIT and inserts a null timestamp in updates table
+  // USER CREATES A NEW HABIT and adds to the habits table and users_habits junction table
+  // and the updates table
   app.post('/api/habits', function(req, res){
     var habit = req.body.habit;
+    //*********************** NOTE: 'category' is currently hardcoded to be 'health'
+    var category = 'health';
+    var user = 'rkelly'; 
     pg.connect(databaseURL, function(err, client, done){
 
       // Currently we only post habits for user number 1: Later we will add multiple users
       // var query = client.query("INSERT INTO habits (user_id, habit) VALUES ($1, $2)", [1, habit]);
-      var getIDQuery = "(SELECT DISTINCT habits.habit_id FROM habits " + 
+      var habitIDQuery = "(SELECT DISTINCT habits.habit_id FROM habits " + 
        "WHERE habits.habit = '" + habit + "')"; 
 
-    var habitsQuery = client.query("INSERT INTO habits (user_id, habit) VALUES (" + 1 + ", '" + habit + "');" +
-     "INSERT INTO updates (habit_id, update) " + 
-     "VALUES (" + getIDQuery + " , current_timestamp - interval '100 years');");
+      var userIDQuery = "(SELECT DISTINCT users.user_id FROM users " + 
+       "WHERE users.username = '" + user + "')"; 
+
+    var habitsQuery = client.query("INSERT INTO habits(habit, category) VALUES ( '" + habit + "', '" + category + "'); " +
+                                   "INSERT INTO users_habits (user_id, habit_id) VALUES (" + userIDQuery + ", " + habitIDQuery + "); " +
+                                   "INSERT INTO updates (habit_id, update_time) " + 
+                                   "VALUES (" + habitIDQuery + " , current_timestamp);");
 
     done();
       // Array to hold values returned from database
@@ -118,7 +128,6 @@ module.exports = function(app){
        "FROM habits " + 
        "INNER JOIN updates " + 
        "ON habits.habit_id = updates.habit_id " + 
-       "WHERE update > current_timestamp - interval '200 years' " +
        "GROUP BY habits.habit;");
       var rows = [];
       if (err) {

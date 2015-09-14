@@ -241,7 +241,7 @@ module.exports = function(app){
 // VY and GLENN request for give kudos/increment the update's kudos_count
 // hardcoded for update with update_id = 1
   app.put('/api/giveKudos', function(req, res){
-console.log('req',req);
+
     pg.connect(databaseURL, function(err, client, done){
       var query = client.query('UPDATE updates SET kudos_count = kudos_count + 1 WHERE update_id = 1;');
       done();
@@ -262,5 +262,3 @@ console.log('req',req);
   }); 
 
 };
-// CURL COMMAND: curl -X POST -d "habit='biking'" localhost:3000/api/updateHabit
-// curl -X PUT -d localhost:3000/api/giveKudos

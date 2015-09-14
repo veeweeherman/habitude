@@ -35,7 +35,6 @@ module.exports = function(app){
     });
   }); 
 
-
   // SHOWS USER PROFILE
   app.get('/api/profile', function(req, res){
     pg.connect(databaseURL, function(err, client, done){

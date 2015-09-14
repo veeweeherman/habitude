@@ -35,7 +35,7 @@ var Input = React.createClass ({ // component that creates input fields (ie. use
         data: data
       })
       .done(function(data) {
-        console.log('user successfully added!')
+        console.log('user successfully added!');
         self.clearForm()
       })
       .fail(function(jqXhr) {

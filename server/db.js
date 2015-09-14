@@ -1,24 +1,19 @@
+"use strict";
 var pg = require('pg');
 var bodyParser = require('body-parser');
-var config = require('./config');
+var config = require('./config.js');
 var databaseURL = config.databaseURL;
-module.exports = function(app){
 
-  //========================================================//
-  //   Database Routes                                      //
-  //========================================================//
+module.exports = function(app){
 
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({extended:false}));
-
 
   //========================================================//
   //   Database Queries                                     //
   //========================================================//
   // ALLOWS USER TO SIGNUP
-  // var newUser = function(req, res) {
-  app.post('/api/signup', function(req, res){  
-    console.log('inside signup'); 
+  app.post('/api/signup', function(req, res){
     var user = req.body.username;
     var password = req.body.password;
     pg.connect(databaseURL, function(err, client, done){
@@ -28,19 +23,17 @@ module.exports = function(app){
       if(err){
         return console.error('error inserting user', err);
       }
-
       query.on('row', function(row) {
         rows.push(row);
+        
       });
       query.on('end', function(result) {
-        client.end();
         console.log('User has been added');
-        return res.json(rows);
+        client.end();
       });
 
     });
   }); 
-
 
   // SHOWS USER PROFILE
   app.get('/api/profile', function(req, res){
@@ -117,10 +110,8 @@ module.exports = function(app){
         client.end();
         return res.json(rows);
       });
-
-
     });
-});
+  });
 
   // GET USER UPDATES TIMES AND FREQUENCY 
   app.get('/api/updateHabit', function(req, res){
@@ -156,34 +147,34 @@ module.exports = function(app){
       // will update the 'biking' habit
 
       var getIDQuery = "(SELECT DISTINCT habits.habit_id FROM habits " + 
-                       "WHERE habits.habit = '" + habit + "')";
-      var query = client.query("INSERT INTO updates (habit_id) " +
-                               "VALUES (" + getIDQuery + ")");
-      done();
-      var rows = [];
-      if (err) {
-        return console.error('error running query', err);
-      }
-      query.on('row', function(row) {
-       rows.push(row);
-      });
-      query.on('end', function(result) {
-        client.end();
-        return res.json(rows);
-      });
+       "WHERE habits.habit = '" + habit + "')";
+    var query = client.query("INSERT INTO updates (habit_id) " +
+     "VALUES (" + getIDQuery + ")");
+    done();
+    var rows = [];
+    if (err) {
+      return console.error('error running query', err);
+    }
+    query.on('row', function(row) {
+     rows.push(row);
+   });
+    query.on('end', function(result) {
+      client.end();
+      return res.json(rows);
     });
+  });
   });
 
   // var deleteHabit = function(req, res) {
-  app.delete('/api/deleteHabit', function(req, res){  
-    var habit = req.body.habit;
-    pg.connect(databaseURL, function(err, client, done){
+    app.delete('/api/deleteHabit', function(req, res){  
+      var habit = req.body.habit;
+      pg.connect(databaseURL, function(err, client, done){
 
-      var getIDQuery = "(SELECT DISTINCT habits.habit_id FROM habits " + 
-                       "WHERE habits.habit = '" + habit + "')";
+        var getIDQuery = "(SELECT DISTINCT habits.habit_id FROM habits " + 
+         "WHERE habits.habit = '" + habit + "')";
 
       var query = client.query(" DELETE FROM updates WHERE habit_id = " + getIDQuery + "; " + 
-                               " DELETE FROM habits WHERE habit_id = " + getIDQuery + "; ");
+       " DELETE FROM habits WHERE habit_id = " + getIDQuery + "; ");
 
       done();
       var rows = [];
@@ -202,27 +193,27 @@ module.exports = function(app){
       });
 
     });
-  });
+    });
 
 
-  app.get('/api/dbtestTablesExist', function(req, res) {
+    app.get('/api/dbtestTablesExist', function(req, res) {
 
-    pg.connect(databaseURL, function(err, client, done){
-      var query = client.query("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' ORDER BY table_schema,table_name;");
-      var rows = []; 
-      if (err) {
-        return console.error('error running query', err);
-      }
-      query.on('row', function(row) {
-        rows.push(row);
-      });
+      pg.connect(databaseURL, function(err, client, done){
+        var query = client.query("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' ORDER BY table_schema,table_name;");
+        var rows = []; 
+        if (err) {
+          return console.error('error running query', err);
+        }
+        query.on('row', function(row) {
+          rows.push(row);
+        });
 
-      query.on('end', function(result) {
-        client.end();
-        return res.json(rows);
+        query.on('end', function(result) {
+          client.end();
+          return res.json(rows);
+        });
       });
     });
-  });
 
 //VY AND GLENNs DB request for name and location
   app.get('/api/nameAndLoc', function(req, res) {
@@ -242,4 +233,8 @@ module.exports = function(app){
       });
     });
   });
+
 };
+
+
+

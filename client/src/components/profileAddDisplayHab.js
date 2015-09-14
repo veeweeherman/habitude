@@ -27,15 +27,17 @@ var ProfileAddDisplayHab = React.createClass({ // main component
     });
   },
 
-  handleHabitSubmit: function(habit) { // this is fired from the render function on render function of this component
+  handleHabitSubmit: function(habitCategory) { // this is fired from the render function on render function of this component
     var habits = this.state.data;
-    var newHabits = habits.concat([habit]);
+    var newHabits = habits.concat([habitCategory]);
     this.setState({data: newHabits});
+    console.log('*************', habitCategory);
+
     $.ajax({
       url: '/api/habits',
       dataType: 'json',
       type: 'POST',
-      data: habit,
+      data: habitCategory,
       success: function(data) {
         this.setState({data: data});
       }.bind(this),
@@ -65,7 +67,6 @@ var ProfileAddDisplayHab = React.createClass({ // main component
 var HabitList = React.createClass({ // updates the habits db with new entry and maps over the entire list of habits and displays to page
 
   updateHabit: function(habit, update){
-
     $.ajax({
       url: '/api/updateHabit',
       type: 'POST',
@@ -122,10 +123,11 @@ var HabitForm = React.createClass({ // form to enter new habits
   handleSubmit: function(e) {
     e.preventDefault();
     var habit = React.findDOMNode(this.refs.habit).value.trim();
+    var category = React.findDOMNode(this.refs.category).value.trim();
     if (!habit) {
       return;
     }
-    this.props.onHabitSubmit({habit: habit});
+    this.props.onHabitSubmit({habit: habit, category: category});
     React.findDOMNode(this.refs.habit).value = '';
   },
 
@@ -134,7 +136,7 @@ var HabitForm = React.createClass({ // form to enter new habits
       <form className="habitForm" onSubmit={this.handleSubmit}>
       <input type="text" placeholder="Enter text" ref="habit" />
       <div>
-        <select name="Categories">
+        <select name="Categories" id='something' ref="category">
         <option value="null">Please select a category for your new Habitude</option>
           <option value="Health">Health</option>
           <option value="Fitness">Fitness</option>

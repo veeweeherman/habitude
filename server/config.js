@@ -8,7 +8,6 @@ module.exports = {
 
   // databaseURL: 'postgres://localhost:5432/kmerino'
 
-
     /* This is used for the PostGres DB server */
     /*
     In the terminal, first export the link to the PG DB: 

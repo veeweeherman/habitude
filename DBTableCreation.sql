@@ -29,5 +29,6 @@ CREATE TABLE updates
 (
   update_id serial NOT NULL PRIMARY KEY,
   habit_id INTEGER NOT NULL REFERENCES habits (habit_id),
-  update_time TIMESTAMP WITHOUT TIME ZONE DEFAULT now()
+  update_time TIMESTAMP WITHOUT TIME ZONE DEFAULT now(),
+  kudos_count INTEGER default 0
 );

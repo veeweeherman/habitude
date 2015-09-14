@@ -42,8 +42,12 @@ module.exports = function(app){
     var habit = req.body.habit;
     //*********************** NOTE: 'category' is currently hardcoded to be 'health'
     var category = req.body.category;
+
     // UNCOMMENT THE LINE BELOW AND ADD THE USER FROM YOUR TEST DATABASE HERE
     // var user = 'R Kelly'; 
+
+    var user = 'rkelly'; 
+
     pg.connect(databaseURL, function(err, client, done){
 
       // Currently we only post habits for user number 1: Later we will add multiple users
@@ -175,6 +179,7 @@ module.exports = function(app){
     });
   });
 
+
   // SHOWS ACTIVITY FEED FROM OTHER USERS IN THE SAME CATEGORY
   app.get('/api/activityFeed', function (req, res){
     var user = 'rkelly';
@@ -202,6 +207,7 @@ module.exports = function(app){
         ") AS query_with_rows " +
         "WHERE row <= 2;");
 
+
       done();
       var rows = []; 
       if (err) {
@@ -217,6 +223,28 @@ module.exports = function(app){
       });
     });
   });
+// VY and GLENN request for give kudos/increment the update's kudos_count
+// hardcoded for update with update_id = 1
+  app.put('/api/giveKudos', function(req, res){
+  console.log('req',req);
+    pg.connect(databaseURL, function(err, client, done){
+      var query = client.query('UPDATE updates SET kudos_count = kudos_count + 1 WHERE update_id = 1;');
+      done();
+      var rows = [];
+      if(err){
+        return console.error('error incrementing', err);
+      }
+      query.on('row', function(row) {
+        rows.push(row);
+        
+      });
+      query.on('end', function(result) {
+        console.log('Kudos has been given...thumb up');
+        client.end();
+      });
+
+    });
+  }); 
 
 };
 // ******************DB TEST CODE***************************
@@ -273,6 +301,10 @@ module.exports = function(app){
  //      client.end();
  //      return res.json(rows);
 
+
  //    });
  //  }); 
  // });
+
+
+

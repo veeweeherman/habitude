@@ -10,7 +10,7 @@ var Habit = React.createClass({ //
   }
 });
 
-var ProfileAddDisplayHab = React.createClass({ // main component
+var ProfileAddDisplayHab = React.createClass({ // parent component
   loadHabitsFromServer: function() {
     $.ajax({
       url: this.props.url,

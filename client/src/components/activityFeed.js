@@ -26,6 +26,7 @@ var Activities = React.createClass({
 
 var ActivityFeed = React.createClass({ //parent component
 	loadActivitiesFromServer: function() {
+    console.log('inside ajax call')
     $.ajax({
       url: '/api/activityFeed',
       dataType: 'json',
@@ -45,20 +46,27 @@ var ActivityFeed = React.createClass({ //parent component
   getInitialState: function() {
     return {data: []};
   },
-  componentDidMount: function() { // this function is disabled by Glennrique and Vy because loadActivitiesFromServer does not have functionality yet 
+  componentWillMount: function() { // this function is disabled by Glennrique and Vy because loadActivitiesFromServer does not have functionality yet 
+    console.log('is this first?')
     this.loadActivitiesFromServer();
     // setInterval(this.loadActivitiesFromServer, this.props.pollInterval); // retrieves habits from db on interval
   },
   render: function() {
+    console.log('inside render func')
     return (
+
+      <div>{this.state.data.map(function(activity){
+        return activity.habit
+      })}
       <div className="ActivityFeed">
       <h1>Activity Feed</h1>
       	<table><tbody>
 	  			<tr>
-	      	<td>{this.state.data}</td>
+	      	<td></td>
 	      	<td><Activities /></td>
 	      	</tr>
 	  		</tbody></table>
+      </div>
       </div>
       );
   }

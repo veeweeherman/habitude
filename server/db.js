@@ -35,44 +35,6 @@ module.exports = function(app){
     });
   }); 
 
-  // SHOWS USER PROFILE
-  app.get('/api/profile', function(req, res){
-    pg.connect(databaseURL, function(err, client, done){
-      var query = client.query('SELECT * from users');
-      var rows = []; // Array to hold values returned from database
-      if (err) {
-        return console.error('error running query', err);
-      }
-      query.on('row', function(row) {
-        rows.push(row);
-      });
-      query.on('end', function(result) {
-        client.end();
-        return res.json(rows);    
-      });   
-    });
-  });
-
-  //*************** CURRENTLY NOT USED *********************
- //  // SHOWS EXISTING USER HABITS
- //  app.get('/api/habits', function(req, res){
- //   pg.connect(databaseURL, function(err, client, done){
- //    var query = client.query('SELECT user_id, habit from habits');
- //    var rows = []; // Array to hold values returned from database
-    
- //    if (err) {
- //      return console.error('error running query', err);
- //    }
- //    query.on('row', function(row) {
- //      rows.push(row);
- //    });
- //    query.on('end', function(result) {
- //      client.end();
- //      return res.json(rows);
-
- //    });
- //  }); 
- // });
 
   // USER CREATES A NEW HABIT and adds to the habits table and users_habits junction table
   // and the updates table
@@ -80,7 +42,8 @@ module.exports = function(app){
     var habit = req.body.habit;
     //*********************** NOTE: 'category' is currently hardcoded to be 'health'
     var category = req.body.category;
-    var user = 'rkelly'; 
+    // UNCOMMENT THE LINE BELOW AND ADD THE USER FROM YOUR TEST DATABASE HERE
+    // var user = 'R Kelly'; 
     pg.connect(databaseURL, function(err, client, done){
 
       // Currently we only post habits for user number 1: Later we will add multiple users
@@ -169,56 +132,77 @@ module.exports = function(app){
     app.delete('/api/deleteHabit', function(req, res){  
       var habit = req.body.habit;
       pg.connect(databaseURL, function(err, client, done){
-
         var getIDQuery = "(SELECT DISTINCT habits.habit_id FROM habits " + 
          "WHERE habits.habit = '" + habit + "')";
-
-      var query = client.query(" DELETE FROM updates WHERE habit_id = " + getIDQuery + "; " + 
+        var query = client.query(" DELETE FROM updates WHERE habit_id = " + getIDQuery + "; " + 
        " DELETE FROM habits WHERE habit_id = " + getIDQuery + "; ");
+        done();
+        var rows = [];
 
-      done();
-      var rows = [];
-
-      if(err){
-        return console.error('error inserting user', err);
-      }
-
-      query.on('row', function(row) {
-        rows.push(row);
-      });
-      query.on('end', function(result) {
-        client.end();
-        console.log('User should be deleted');
-        return res.json(rows);
-      });
-
-    });
-    });
-
-
-    app.get('/api/dbtestTablesExist', function(req, res) {
-
-      pg.connect(databaseURL, function(err, client, done){
-        var query = client.query("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' ORDER BY table_schema,table_name;");
-        var rows = []; 
-        if (err) {
-          return console.error('error running query', err);
+        if(err){
+          return console.error('error inserting user', err);
         }
+
         query.on('row', function(row) {
           rows.push(row);
         });
-
         query.on('end', function(result) {
           client.end();
+          console.log('User should be deleted');
           return res.json(rows);
         });
+
       });
     });
 
+
 //VY AND GLENNs DB request for name and location
   app.get('/api/nameAndLoc', function(req, res) {
-    pg.connect(databaseURL, function(err, client, done){      
-      var query = client.query("SELECT location,username FROM users WHERE user_id = 1;")
+    pg.connect(databaseURL, function (err, client, done){      
+      var query = client.query("SELECT location,username FROM users WHERE user_id = 1;");
+      var rows = []; 
+      if (err) {
+        return console.error('error running query', err);
+      }
+      query.on('row', function(row) {
+        rows.push(row);
+      });
+
+      query.on('end', function(result) {
+        client.end();
+        return res.json(rows);
+      });
+    });
+  });
+
+  // SHOWS ACTIVITY FEED FROM OTHER USERS IN THE SAME CATEGORY
+  app.get('/api/activityFeed', function (req, res){
+    var user = 'rkelly';
+    pg.connect(databaseURL, function (err, client, done){
+
+      var getCategories = "(SELECT DISTINCT habits.category "+
+        "FROM habits "+
+        "INNER JOIN users_habits "+
+        "ON habits.habit_id = users_habits.habit_id "+
+        "INNER JOIN users "+
+        "ON users_habits.user_id = users.user_id where users.username = '"+ user + "')";
+
+      var query = client.query("SELECT * FROM ( " +
+        "SELECT DISTINCT users.username, habits.habit, habits.category, updates.update_time, habits.habit_id, " +
+        "row_number() OVER (PARTITION BY users.username ORDER BY updates.update_time DESC) AS row " +
+        "FROM habits " +
+        "INNER JOIN users_habits " +
+        "ON habits.habit_id = users_habits.habit_id " +
+        "INNER JOIN users " +
+        "ON users_habits.user_id = users.user_id " +
+        "INNER JOIN updates " +
+        "ON habits.habit_id = updates.habit_id " +
+        "WHERE users.username <> '"+ user +"' " +
+        "AND category IN (" + getCategories + ")" +
+        ") AS query_with_rows " +
+        "WHERE row <= 2;");
+
+      done();
       var rows = []; 
       if (err) {
         return console.error('error running query', err);
@@ -235,6 +219,60 @@ module.exports = function(app){
   });
 
 };
+// ******************DB TEST CODE***************************
+    // app.get('/api/dbtestTablesExist', function(req, res) {
 
+    //   pg.connect(databaseURL, function(err, client, done){
+    //     var query = client.query("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' ORDER BY table_schema,table_name;");
+    //     var rows = []; 
+    //     if (err) {
+    //       return console.error('error running query', err);
+    //     }
+    //     query.on('row', function(row) {
+    //       rows.push(row);
+    //     });
 
+    //     query.on('end', function(result) {
+    //       client.end();
+    //       return res.json(rows);
+    //     });
+    //   });
+    // });
 
+  //*************** CURRENTLY NOT USED *********************
+  // SHOWS USER PROFILE
+  // app.get('/api/profile', function(req, res){
+  //   pg.connect(databaseURL, function(err, client, done){
+  //     var query = client.query('SELECT * from users');
+  //     var rows = []; // Array to hold values returned from database
+  //     if (err) {
+  //       return console.error('error running query', err);
+  //     }
+  //     query.on('row', function(row) {
+  //       rows.push(row);
+  //     });
+  //     query.on('end', function(result) {
+  //       client.end();
+  //       return res.json(rows);    
+  //     });   
+  //   });
+  // });
+ //  // SHOWS EXISTING USER HABITS
+ //  app.get('/api/habits', function(req, res){
+ //   pg.connect(databaseURL, function(err, client, done){
+ //    var query = client.query('SELECT user_id, habit from habits');
+ //    var rows = []; // Array to hold values returned from database
+    
+ //    if (err) {
+ //      return console.error('error running query', err);
+ //    }
+ //    query.on('row', function(row) {
+ //      rows.push(row);
+ //    });
+ //    query.on('end', function(result) {
+ //      client.end();
+ //      return res.json(rows);
+
+ //    });
+ //  }); 
+ // });

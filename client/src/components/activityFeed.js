@@ -52,23 +52,23 @@ var ActivityFeed = React.createClass({ //parent component
     // setInterval(this.loadActivitiesFromServer, this.props.pollInterval); // retrieves habits from db on interval
   },
   render: function() {
-    console.log('inside render func')
-    return (
+    console.log('this.state.data',this.state.data)
+    var activityNodes = this.state.data.map(function(activity){
 
-      <div>{this.state.data.map(function(activity){
-        return activity.habit
-      })}
-      <div className="ActivityFeed">
-      <h1>Activity Feed</h1>
-      	<table><tbody>
-	  			<tr>
-	      	<td></td>
-	      	<td><Activities /></td>
-	      	</tr>
-	  		</tbody></table>
-      </div>
-      </div>
-      );
+      return 
+        <div className="ActivityFeed">
+        <h1>Activity Feed</h1>
+        	<table><tbody>
+            <tr>
+              <td>activity.habit</td>
+              <td><Activities/></td>
+            </tr>
+          </tbody></table>
+        </div>
+    }.bind(this));
+    return (
+      <div className="ActivityFeed">{activityNodes}</div>  
+    );
   }
 })
 

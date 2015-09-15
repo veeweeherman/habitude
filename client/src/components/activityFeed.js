@@ -55,16 +55,16 @@ var ActivityFeed = React.createClass({ //parent component
     console.log('this.state.data',this.state.data)
     var activityNodes = this.state.data.map(function(activity){
 
-      return 
+      return (
         <div className="ActivityFeed">
         <h1>Activity Feed</h1>
         	<table><tbody>
             <tr>
-              <td>activity.habit</td>
+              <td>{activity.habit}</td>
               <td><Activities/></td>
             </tr>
           </tbody></table>
-        </div>
+        </div> );
     }.bind(this));
     return (
       <div className="ActivityFeed">{activityNodes}</div>  

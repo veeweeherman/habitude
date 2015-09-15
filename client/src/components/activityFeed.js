@@ -23,7 +23,7 @@ var Activities = React.createClass({
     ) 
   }
 })
-// <p>{username} checked in today for: {biking}. {username} did it on: {2015-09-14}</p>
+
 var ActivityFeed = React.createClass({ //parent component
 	loadActivitiesFromServer: function() {
     $.ajax({
@@ -37,15 +37,16 @@ var ActivityFeed = React.createClass({ //parent component
         // console.error(this.props.url);
         // console.error(status);
         // console.log(err.toString());
+        console.log('DOUBLE EWE TEE EFF');
       }.bind(this)
     });
   },
   getInitialState: function() {
     return {data: []};
   },
-  componentDidMount: function() {
-    this.loadActivitiesFromServer();
-    setInterval(this.loadActivitiesFromServer, this.props.pollInterval); // retrieves habits from db on interval
+  componentDidMount: function() { // this function is disabled by Glennrique and Vy because loadActivitiesFromServer does not have functionality yet 
+    // this.loadActivitiesFromServer();
+    // setInterval(this.loadActivitiesFromServer, this.props.pollInterval); // retrieves habits from db on interval
   },
   render: function() {
     return (

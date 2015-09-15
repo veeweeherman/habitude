@@ -43,6 +43,7 @@ module.exports = function(app){
     //*********************** NOTE: 'category' is currently hardcoded to be 'health'
     var category = req.body.category;
 
+
     // UNCOMMENT THE LINE BELOW AND ADD THE USER FROM YOUR TEST DATABASE HERE
     // var user = 'R Kelly'; 
 
@@ -226,11 +227,6 @@ module.exports = function(app){
 // VY and GLENN request for give kudos/increment the update's kudos_count
 // hardcoded for update with update_id = 1
   app.put('/api/giveKudos', function(req, res){
-<<<<<<< HEAD
-  console.log('req',req);
-=======
-
->>>>>>> cleaned clode added documentation
     pg.connect(databaseURL, function(err, client, done){
       var query = client.query('UPDATE updates SET kudos_count = kudos_count + 1 WHERE update_id = 1;');
       done();

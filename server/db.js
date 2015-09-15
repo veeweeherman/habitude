@@ -140,7 +140,8 @@ module.exports = function(app){
         var getIDQuery = "(SELECT DISTINCT habits.habit_id FROM habits " + 
          "WHERE habits.habit = '" + habit + "')";
         var query = client.query(" DELETE FROM updates WHERE habit_id = " + getIDQuery + "; " + 
-       " DELETE FROM habits WHERE habit_id = " + getIDQuery + "; ");
+        "DELETE FROM users_habits WHERE habit_id = " + getIDQuery + "; " +
+        "DELETE FROM habits WHERE habit_id = " + getIDQuery + "; ");
         done();
         var rows = [];
 
@@ -153,7 +154,6 @@ module.exports = function(app){
         });
         query.on('end', function(result) {
           client.end();
-          console.log('User should be deleted');
           return res.json(rows);
         });
 

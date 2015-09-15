@@ -306,31 +306,4 @@ module.exports = function(app){
  //  }); 
  // });
 
-
-
-
-
-// VY and GLENN request for give kudos/increment the update's kudos_count
-// hardcoded for update with update_id = 1
-  app.put('/api/giveKudos', function(req, res){
-
-    pg.connect(databaseURL, function(err, client, done){
-      var query = client.query('UPDATE updates SET kudos_count = kudos_count + 1 WHERE update_id = 1;');
-      done();
-      var rows = [];
-      if(err){
-        return console.error('error incrementing', err);
-      }
-      query.on('row', function(row) {
-        rows.push(row);
-        
-      });
-      query.on('end', function(result) {
-        console.log('Kudos has been given...thumb up');
-        client.end();
-      });
-
-    });
-  }); 
-
 };

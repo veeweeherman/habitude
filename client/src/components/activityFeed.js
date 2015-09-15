@@ -9,7 +9,7 @@ var ActivityFeed = React.createClass({
       dataType: 'json',
       success: function(data) { // IDK why no success msg sent but in console success message from db-query
       	this.setState({data:data})
-    	console.log('successfull thumbs up')
+    	console.log('successful thumbs up')
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(this.props.url, status, err.toString());

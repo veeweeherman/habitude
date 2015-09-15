@@ -43,7 +43,7 @@ module.exports = function(app){
     //*********************** NOTE: 'category' is currently hardcoded to be 'health'
     var category = req.body.category;
     // UNCOMMENT THE LINE BELOW AND ADD THE USER FROM YOUR TEST DATABASE HERE
-    //var user = 'R Kelly'; 
+    // var user = 'R Kelly'; 
     pg.connect(databaseURL, function(err, client, done){
 
       // Currently we only post habits for user number 1: Later we will add multiple users
@@ -177,22 +177,44 @@ module.exports = function(app){
 
   // SHOWS ACTIVITY FEED FROM OTHER USERS IN THE SAME CATEGORY
   app.get('/api/activityFeed', function (req, res){
-    var user = req.body.username;
-
+    var user = 'rkelly';
     pg.connect(databaseURL, function (err, client, done){
-      var query = client.query("SELECT DISTINCT users.username, habits.category FROM habits INNER JOIN users_habits ON habits.habit_id = users_habits.habit_id INNER JOIN users ON users_habits.user_id = users.user_id WHERE users.username <> \'R Kelly\' AND category IN (SELECT DISTINCT habits.category FROM habits INNER JOIN users_habits ON habits.habit_id = users_habits.habit_id INNER JOIN users ON users_habits.user_id = users.user_id where users.username = \'R Kelly\');");
-        var rows = []; 
-        if (err) {
-          return console.error('error running query', err);
-        }
-        query.on('row', function(row) {
-          rows.push(row);
-        });
 
-        query.on('end', function(result) {
-          client.end();
-          return res.json(rows);
-        });
+      var getCategories = "(SELECT DISTINCT habits.category "+
+        "FROM habits "+
+        "INNER JOIN users_habits "+
+        "ON habits.habit_id = users_habits.habit_id "+
+        "INNER JOIN users "+
+        "ON users_habits.user_id = users.user_id where users.username = '"+ user + "')";
+
+      var query = client.query("SELECT * FROM ( " +
+        "SELECT DISTINCT users.username, habits.habit, habits.category, updates.update_time, habits.habit_id, " +
+        "row_number() OVER (PARTITION BY users.username ORDER BY updates.update_time DESC) AS row " +
+        "FROM habits " +
+        "INNER JOIN users_habits " +
+        "ON habits.habit_id = users_habits.habit_id " +
+        "INNER JOIN users " +
+        "ON users_habits.user_id = users.user_id " +
+        "INNER JOIN updates " +
+        "ON habits.habit_id = updates.habit_id " +
+        "WHERE users.username <> '"+ user +"' " +
+        "AND category IN (" + getCategories + ")" +
+        ") AS query_with_rows " +
+        "WHERE row <= 2;");
+
+      done();
+      var rows = []; 
+      if (err) {
+        return console.error('error running query', err);
+      }
+      query.on('row', function(row) {
+        rows.push(row);
+      });
+
+      query.on('end', function(result) {
+        client.end();
+        return res.json(rows);
+      });
     });
   });
 

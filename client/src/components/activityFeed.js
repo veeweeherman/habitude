@@ -27,10 +27,11 @@ var Activities = React.createClass({
 var ActivityFeed = React.createClass({ //parent component
 	loadActivitiesFromServer: function() {
     $.ajax({
-      url: this.props.url,
+      url: '/api/activityFeed',
       dataType: 'json',
       cache: false,
       success: function(data) {
+        console.log('success from the load activities DATA', data);
         this.setState({data: data});
       }.bind(this),
       error: function(xhr, status, err) {
@@ -45,7 +46,7 @@ var ActivityFeed = React.createClass({ //parent component
     return {data: []};
   },
   componentDidMount: function() { // this function is disabled by Glennrique and Vy because loadActivitiesFromServer does not have functionality yet 
-    // this.loadActivitiesFromServer();
+    this.loadActivitiesFromServer();
     // setInterval(this.loadActivitiesFromServer, this.props.pollInterval); // retrieves habits from db on interval
   },
   render: function() {
@@ -54,7 +55,7 @@ var ActivityFeed = React.createClass({ //parent component
       <h1>Activity Feed</h1>
       	<table><tbody>
 	  			<tr>
-	      	<td>{this.props.username} checked in today for: {this.props.habit}. {this.props.username} did it on: {this.props.date}</td>
+	      	<td>{this.state.data}</td>
 	      	<td><Activities /></td>
 	      	</tr>
 	  		</tbody></table>

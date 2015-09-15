@@ -10,7 +10,7 @@ var Habit = React.createClass({ //
   }
 });
 
-var ProfileAddDisplayHab = React.createClass({ // main component
+var ProfileAddDisplayHab = React.createClass({ // parent component
   loadHabitsFromServer: function() {
     $.ajax({
       url: this.props.url,
@@ -27,19 +27,21 @@ var ProfileAddDisplayHab = React.createClass({ // main component
     });
   },
 
-  handleHabitSubmit: function(habitCategory) { // this is fired from the render function on render function of this component
-    var habits = this.state.data;
-    var newHabits = habits.concat([habitCategory]);
-    this.setState({data: newHabits});
+  handleHabitSubmit: function(habitCategory) { // this is fired from the render function of this component
+  // the argument, "habitCategory ", is the data submitted (value of the text-field AND the dropdown menu) by user that will be sent to the server via POST request
+    var habits = this.state.data; // state of the data before the new habit is added
+    var newHabits = habits.concat([habitCategory]); // add the new data to the data object
+    this.setState({data: newHabits}); // re-set the state to include both the old and new data
     console.log('*************', habitCategory);
 
+    // in the dollowing AJAX object, the data is set to the value of the new object that is submitted by the user
     $.ajax({
       url: '/api/habits',
       dataType: 'json',
       type: 'POST',
       data: habitCategory,
       success: function(data) {
-        this.setState({data: data});
+        this.setState({data: data}); 
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(this.props.url, status, err.toString());
@@ -122,12 +124,13 @@ var HabitList = React.createClass({ // updates the habits db with new entry and 
 var HabitForm = React.createClass({ // form to enter new habits
   handleSubmit: function(e) {
     e.preventDefault();
+    // Both habit and category are the 2 pieces of info being sent in the handleSubmit function, they are referenced here with this.refs, which refer to the values of the DOM element that have a ref-attribute of "habit" and "category"
     var habit = React.findDOMNode(this.refs.habit).value.trim();
     var category = React.findDOMNode(this.refs.category).value.trim();
     if (!habit) {
       return;
     }
-    this.props.onHabitSubmit({habit: habit, category: category});
+    this.props.onHabitSubmit({habit: habit, category: category}); // with every new habit object, it will have 2 key-val pairs; one for the habit-string and one string from the category dropdown menu
     React.findDOMNode(this.refs.habit).value = '';
   },
 

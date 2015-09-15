@@ -57,7 +57,7 @@ var ActivityFeed = React.createClass({ //parent component
 
       return (
         <div className="ActivityFeed">
-        <h1>Activity Feed</h1>
+        
         	<table><tbody>
             <tr>
               <td>{activity.habit}</td>
@@ -67,7 +67,7 @@ var ActivityFeed = React.createClass({ //parent component
         </div> );
     }.bind(this));
     return (
-      <div className="ActivityFeed">{activityNodes}</div>  
+      <div className="ActivityFeed"><h1>Activity Feed</h1>{activityNodes}</div>  
     );
   }
 })

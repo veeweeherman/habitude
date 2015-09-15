@@ -60,7 +60,7 @@ var ActivityFeed = React.createClass({ //parent component
         
         	<table><tbody>
             <tr>
-              <td>{activity.habit}</td>
+              <td>{activity.username+': '+activity.habit+' at '+activity.update_time}</td>
               <td><Activities/></td>
             </tr>
           </tbody></table>

@@ -26,6 +26,29 @@
 //   }
 // })
 
+var Counter = React.createClass({ // sample counter component
+  incrementCount: function(){
+    this.setState({
+      count: this.state.count + 1
+    });
+  },
+  getInitialState: function(){
+     return {
+       count: 0
+     }
+  },
+  render: function(){
+    return (
+      <div className="count">
+        <p>with {this.state.count} kudos</p>
+        <button type="button" onClick={this.incrementCount}>ThumbsUp</button>
+      </div>
+    );
+  }
+});
+// React.render(<Counter/>, document.getElementById('activityfeed'))
+
+
 var ActivityFeed = React.createClass({ //parent component
 
 	loadActivitiesFromServer: function() { //loads data for the activity feed
@@ -70,8 +93,8 @@ var ActivityFeed = React.createClass({ //parent component
       
         	<table><tbody>
             <tr>
-              <td>{activity.username+': '+activity.habit+' at '+activity.update_time+' with '+activity.kudos_count+' kudos'}</td>
-              <td><button type="submit" onClick={this.giveKudos.bind(this,activity.update_id)}>THUMBS UP</button></td>
+              <td>{activity.username+': '+activity.habit+' at '+activity.update_time}</td>
+              <td><Counter/></td>
             </tr>
           </tbody></table>
        );
@@ -82,4 +105,4 @@ var ActivityFeed = React.createClass({ //parent component
   }
 })
 
-React.render(<ActivityFeed  />, document.getElementById('activityfeed'))
+React.render(<ActivityFeed />, document.getElementById('activityfeed'))

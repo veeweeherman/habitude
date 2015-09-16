@@ -25,7 +25,7 @@ var ProfilePicture = React.createClass({
 	render: function(){
 		return (
 			<div>
-        <img className="profilepic" src={'http://40.media.tumblr.com/tumblr_makm5yaqVk1r8b83ro1_500.jpg'} />
+        <img className="img-circle" src={'http://thesource.com/wp-content/uploads/2015/05/R_-Kelly-new-album-buffet-110x110.jpg'} />
         <p>Hello, {this.state.username}!</p>
         <p>LOCATION: {this.state.location}</p>
       </div>

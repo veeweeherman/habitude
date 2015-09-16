@@ -109,7 +109,6 @@ module.exports = function(app){
   // USER UPDATES HABITS
   app.post('/api/updateHabit', function(req, res){
     var habit = req.body.habit;
-    console.log('habit???????????',habit)
     pg.connect(databaseURL, function(err, client, done){
       // Posts an update to the 'updates' table where the habit_id matches that of the input habit string
       // CURL COMMAND: curl -X POST -d "habit='biking'" localhost:3000/api/updateHabit
@@ -229,7 +228,6 @@ module.exports = function(app){
 // hardcoded for update with update_id = 1
   app.post('/api/giveKudos', function(req, res){
     var update_id = req.body.update_id;
-    console.log('req.params?????????????',req.params);
     pg.connect(databaseURL, function(err, client, done){
       // var query = client.query("UPDATE updates SET kudos_count = kudos_count + 1 WHERE update_id = " + update_id + ";");
       var query = client.query("UPDATE updates SET kudos_count = kudos_count + 1 WHERE update_id = 1;");

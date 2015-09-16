@@ -29,21 +29,16 @@
 var ActivityFeed = React.createClass({ //parent component
 
 	loadActivitiesFromServer: function() { //loads data for the activity feed
-    console.log('inside ajax call')
     $.ajax({
       url: '/api/activityFeed',
       dataType: 'json',
       cache: false,
       success: function(data) {
         console.log('success from the load activities DATA', data);
-        console.log('this inside succcess',this)
         this.setState({data: data});
       }.bind(this),
       error: function(xhr, status, err) {
-        console.error(this.props.url);
-        console.error(status);
-        console.log(err.toString());
-        console.log('DOUBLE EWE TEE EFF');
+        console.error(this.props.url, status, err.toString());
       }.bind(this)
     });
   },
@@ -60,7 +55,6 @@ var ActivityFeed = React.createClass({ //parent component
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(this.props.url, status, err.toString());
-        console.log('DOUBLE EWE TEE EFF KUDOS');
       }.bind(this)
     });
   },
@@ -72,8 +66,6 @@ var ActivityFeed = React.createClass({ //parent component
   },
   render: function() {
     var activityNodes = this.state.data.map(function(activity,i,list){ //iterating thru array of objects returned from db query, and gives each activity its own kudos button
-    console.log('this.state.data',this.state.data)
-      console.log('arguments inside map',arguments)
       return (
       
         	<table><tbody>

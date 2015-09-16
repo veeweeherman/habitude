@@ -1,13 +1,13 @@
-var Activities = React.createClass({
+var KudosButton = React.createClass({
 		giveKudos: function(){ // method gets fires on button-click
 		$.ajax({
       url: '/api/giveKudos',
-      type: 'PUT',   
+      type: 'PUT',   // PUT request to update kudos_count value in the db
       contentType: 'application/json',
       dataType: 'json',
       success: function(data) { // IDK why no success msg sent but in console success message from db-query
       	this.setState({data:data})
-    	console.log('successful thumbs up')
+        console.log('successful thumbs up')
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(this.props.url, status, err.toString());
@@ -25,7 +25,7 @@ var Activities = React.createClass({
 })
 
 var ActivityFeed = React.createClass({ //parent component
-	loadActivitiesFromServer: function() {
+	loadActivitiesFromServer: function() { //loads data for the activity feed
     console.log('inside ajax call')
     $.ajax({
       url: '/api/activityFeed',
@@ -33,6 +33,7 @@ var ActivityFeed = React.createClass({ //parent component
       cache: false,
       success: function(data) {
         console.log('success from the load activities DATA', data);
+        console.log('this inside succcess',this)
         this.setState({data: data});
       }.bind(this),
       error: function(xhr, status, err) {
@@ -43,28 +44,24 @@ var ActivityFeed = React.createClass({ //parent component
       }.bind(this)
     });
   },
-  getInitialState: function() {
+  getInitialState: function() { // initial state is empty until our get request returns with the data
     return {data: []};
   },
-  componentWillMount: function() { // this function is disabled by Glennrique and Vy because loadActivitiesFromServer does not have functionality yet 
-    console.log('is this first?')
+  componentWillMount: function() { // this method fires before the intitial render
     this.loadActivitiesFromServer();
-    // setInterval(this.loadActivitiesFromServer, this.props.pollInterval); // retrieves habits from db on interval
   },
   render: function() {
     console.log('this.state.data',this.state.data)
-    var activityNodes = this.state.data.map(function(activity){
-
+    var activityNodes = this.state.data.map(function(activity){ //iterating thru array of objects returned from db query, and gives each activity its own kudos button
       return (
-        <div className="ActivityFeed">
-        
+      
         	<table><tbody>
             <tr>
               <td>{activity.username+': '+activity.habit+' at '+activity.update_time}</td>
-              <td><Activities/></td>
+              <td><KudosButton/></td>
             </tr>
           </tbody></table>
-        </div> );
+       );
     }.bind(this));
     return (
       <div className="ActivityFeed"><h1>Activity Feed</h1>{activityNodes}</div>  
@@ -72,4 +69,4 @@ var ActivityFeed = React.createClass({ //parent component
   }
 })
 
-React.render(<ActivityFeed username={'glennrique'} habit={'droppin beats'} date={'2015-09-14'} />, document.getElementById('activityfeed'))
+React.render(<ActivityFeed  />, document.getElementById('activityfeed'))

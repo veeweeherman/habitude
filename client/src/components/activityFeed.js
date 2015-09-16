@@ -26,7 +26,7 @@
 //   }
 // })
 
-var Counter = React.createClass({ // sample counter component
+var Counter = React.createClass({ // child component, see https://scotch.io/tutorials/learning-react-getting-started-and-concepts for more info
   incrementCount: function(){
     this.setState({
       count: this.state.count + 1
@@ -46,8 +46,6 @@ var Counter = React.createClass({ // sample counter component
     );
   }
 });
-// React.render(<Counter/>, document.getElementById('activityfeed'))
-
 
 var ActivityFeed = React.createClass({ //parent component
 
@@ -65,7 +63,7 @@ var ActivityFeed = React.createClass({ //parent component
       }.bind(this)
     });
   },
-  giveKudos: function(updateID){ // method gets fires on button-click
+  giveKudos: function(updateID){ // method gets fired on button-click
     console.log('updateID',updateID)
     $.ajax({
       type: 'POST',   // PUT request to update kudos_count value in the db

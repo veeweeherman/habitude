@@ -55,7 +55,7 @@ var ActivityFeed = React.createClass({ //parent component
       dataType: 'json',
       url: '/api/giveKudos',
       success: function(updateID) { // IDK why no success msg sent but in console success message from db-query
-        console.log('thefucking data',updateID)
+        console.log('data',updateID)
         // this.setState({data:data})
       }.bind(this),
       error: function(xhr, status, err) {

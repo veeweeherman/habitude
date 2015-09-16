@@ -18,12 +18,9 @@ app.use(bodyParser.urlencoded({extended:false}));
 //   Serving the client static files                      //
 //========================================================//
 app.use(express.static(path.normalize(__dirname + '/client')));
-
-// app.use(session({ //
-//   secret: 'shhh, it\'s a secret',
-//   resave: false,
-//   saveUninitialized: true
-// }));
+app.get('/api/about', function (req, res){
+  res.redirect('/about.html');
+});
 
 
 //========================================================//

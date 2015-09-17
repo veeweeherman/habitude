@@ -28,10 +28,18 @@ var ProfilePicture = React.createClass({
         <img className="img-circle" src={'http://thesource.com/wp-content/uploads/2015/05/R_-Kelly-new-album-buffet-110x110.jpg'} />
         <p>Hello, {this.state.username}!</p>
         <p>LOCATION: {this.state.location}</p>
+          <div className="panel-body">
+                      <div className="expandable expandable-indicator-white expandable-trigger">
+                        <div className="expandable-content">
+                          <p>Aloha! Im Robert and I like to make music.</p>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut autem delectus dolorum necessitatibus neque odio quam quas qui quod soluta? Aliquid eius esse minima.</p>
+                        </div>
+                      </div>
+                    </div>
       </div>
-    ) // pulls the image for user's profile
+    ) 
 	}
-})
+})// pulls the image for user's profile
 // TODO: photo needs to be queried from db of users'profile photos
 React.render(<ProfilePicture/>, document.getElementById("picnameloc"))
 

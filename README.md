@@ -23,7 +23,7 @@
 1. [Requirements](#requirements)
 1. [Development](#development)
   1. [Installing Dependencies](#installing-dependencies)
-1.[Contributing](CONTRIBUTING.MD)
+1. [Contributing](CONTRIBUTING.MD)
 
 ## Team ##
 ### The Gap Band ###

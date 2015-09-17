@@ -99,6 +99,8 @@ var HabitList = React.createClass({ // updates the habits db with new entry and 
 
   render: function() {
 
+    //<th> tags for column names should be above the map function
+
     var habitNodes = this.props.data.map(function(habit, index) {
       if (habit.count === undefined) {
         habit.count = 0;
@@ -112,6 +114,7 @@ var HabitList = React.createClass({ // updates the habits db with new entry and 
                   <div className="table-responsive">
                     <table className="table v-middle">
                         <thead>
+
                           <tr>
                             <th width="20">
                             </th>
@@ -120,7 +123,9 @@ var HabitList = React.createClass({ // updates the habits db with new entry and 
                             <th>Progress</th>
                             <th className="text-right">Delete</th>
                           </tr>
+
                         </thead>
+
                         <tbody id="responsive-table-body">
                           <tr>
                            <td></td>
@@ -163,8 +168,7 @@ var HabitList = React.createClass({ // updates the habits db with new entry and 
       );
   }
 });
-                                // <a href="#" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Delete">
-                                // <i class="fa fa-times"></i>
+                            
 
 var HabitForm = React.createClass({ // form to enter new habits
   handleSubmit: function(e) {

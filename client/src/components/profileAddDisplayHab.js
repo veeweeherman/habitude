@@ -104,17 +104,58 @@ var HabitList = React.createClass({ // updates the habits db with new entry and 
         habit.count = 0;
       }
       return (
-        <table><tbody>
-          <tr>
-            <td><button type="submit" formMethod="post" onClick={this.updateHabit.bind(this, habit)}>Check-in</button></td>
-            <td><Habit user_id={habit.user_id} key={index}>
-              {habit.habit+' '+(habit.count-1)} 
-              </Habit>
-            </td>
-            <td><button type="button" className="btn btn-xs btn-danger" formmethod="post" onClick={this.deleteHabit.bind(this, habit)}>DELETEME</button>
-            </td>
-          </tr>
-        </tbody></table>
+
+        <div className="row">
+           <div className="">
+             <div className="page-section-heading"></div>
+                <div className="panel panel-default">
+                  <div className="table-responsive">
+                    <table className="table v-middle">
+                        <thead>
+                          <tr>
+                            <th width="20">
+                            </th>
+                            <th>Check in</th>
+                            <th>Habit</th>
+                            <th>Progress</th>
+                            <th className="text-right">Delete</th>
+                          </tr>
+                        </thead>
+                        <tbody id="responsive-table-body">
+                          <tr>
+                           <td></td>
+
+                          <td><span className="label label-default"><button type="submit" formMethod="post" onClick={this.updateHabit.bind(this, habit)}>Check-in</button></span></td>
+
+                          <td><Habit user_id={habit.user_id} key={index}>
+                            {habit.habit+' '+(habit.count-1)} 
+                            </Habit>
+                          </td>
+
+
+                          <td>
+                              <div className="progress">
+                                <div className="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+                                </div>
+                              </div>
+                            </td>
+
+
+                            <td className="text-right">
+                            <button type="button" className="btn btn-xs btn-danger" formmethod="post" onClick={this.deleteHabit.bind(this, habit)}>x</button>
+                              
+
+
+                              
+                            </td>
+                             </tr>
+                        </tbody>
+                      </table>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
         );
     }.bind(this));
     return (
@@ -122,6 +163,8 @@ var HabitList = React.createClass({ // updates the habits db with new entry and 
       );
   }
 });
+                                // <a href="#" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Delete">
+                                // <i class="fa fa-times"></i>
 
 var HabitForm = React.createClass({ // form to enter new habits
   handleSubmit: function(e) {

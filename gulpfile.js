@@ -53,11 +53,6 @@ gulp.task('open', ['connect'], function() {
    .pipe(open({ uri: config.devBaseUrl + ':' + config.port + '/' }));
 });
 
-gulp.task('compile', function(){
-   var b = browserify();
-   b.transform(reactify);
-   b.add();
-});
 
 //handle our html files and move it over to dist
 gulp.task('html', function() {

@@ -18,10 +18,6 @@ app.use(bodyParser.urlencoded({extended:false}));
 //   Serving the client static files                      //
 //========================================================//
 app.use(express.static(path.normalize(__dirname + '/client')));
-app.get('/api/about', function (req, res){
-  res.redirect('/about.html');
-});
-
 
 //========================================================//
 //   Calling the server                                   //

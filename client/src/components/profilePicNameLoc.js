@@ -23,6 +23,9 @@ var ProfilePicture = React.createClass({
     })
   },
 	render: function(){
+
+    //ENTIRE PROF SIDEBAR GOES HERE
+
 		return (
 			<div>
         <img className="img-circle" src={'http://thesource.com/wp-content/uploads/2015/05/R_-Kelly-new-album-buffet-110x110.jpg'} />

@@ -104,7 +104,7 @@ var HabitList = React.createClass({ // updates the habits db with new entry and 
         habit.count = 0;
       }
       return (
-<div className="row">
+        <div className="row">
              <div className="page-section-heading"></div>
                 <div className="panel panel-default">
                   <div className="table-responsive">
@@ -164,48 +164,6 @@ var HabitList = React.createClass({ // updates the habits db with new entry and 
   }
 });
 
-// var HabitTable = React.createClass({
-//   render: function() {
-//     return (
-//        <div className="row">
-//              <div className="page-section-heading"></div>
-//                 <div className="panel panel-default">
-//                   <div className="table-responsive">
-
-//                     <table className="table v-middle">
-
-//                         <thead>
-
-//                           <tr>
-//                             <th width="20">
-//                             </th>
-//                             <th>Check in</th>
-//                             <th>Habit</th>
-//                             <th>Progress</th>
-//                             <th className="text-right">Delete</th>
-//                           </tr>
-
-//                         </thead>
-
-//                         <tbody id="responsive-table-body">
-
-
-//                         <HabitList/>
-
-
-//                       </tbody>
-//                       </table>
-
-//                     </div>
-//                   </div>
-//               </div>
-
-//     )
-//   }
-// });
-
-
-                            
 
 var HabitForm = React.createClass({ // form to enter new habits
   handleSubmit: function(e) {

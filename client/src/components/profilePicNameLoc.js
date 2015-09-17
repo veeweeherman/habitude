@@ -31,8 +31,8 @@ var ProfilePicture = React.createClass({
           <div className="panel-body">
             <div className="expandable expandable-indicator-white expandable-trigger">
               <div className="expandable-content">
-                <p>Aloha! Im Robert and I like to make music.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut autem delectus dolorum necessitatibus neque odio quam quas qui quod soluta? Aliquid eius esse minima.</p>
+                <p>Aloha! My name is Robert and I like to make music. I want to develop better habits through the use of this app!</p>
+                <p></p>
               </div>
             </div>
           </div>

@@ -27,24 +27,54 @@ var ProfilePicture = React.createClass({
     //ENTIRE PROF SIDEBAR GOES HERE
 
 		return (
-			<div>
-        <img className="img-circle" src={'http://thesource.com/wp-content/uploads/2015/05/R_-Kelly-new-album-buffet-110x110.jpg'} />
-        <p>Hello, {this.state.username}!</p>
-        <p>LOCATION: {this.state.location}</p>
-          <div className="panel-body">
-            <div className="expandable expandable-indicator-white expandable-trigger">
+			<div className="sidebar left sidebar-size-2 sidebar-offset-0 sidebar-visible-desktop sidebar-visible-mobile sidebar-skin-dark" id="sidebar-menu">
+        <div data-scrollable>
+          <div className="sidebar-block">
+            <div className="profile">  
+              <img className="img-circle" src={'http://thesource.com/wp-content/uploads/2015/05/R_-Kelly-new-album-buffet-110x110.jpg'} />
+              <h4>{this.state.username}</h4>
+              <p>{this.state.location}</p>
+              <p>Hello from the profilepicname component</p>
+               <div className="panel-body">
+                  <div className="expandable expandable-indicator-white expandable-trigger">
               <div className="expandable-content">
-                <p>Aloha! My name is Robert and I like to make music. I want to develop better habits through the use of this app!</p>
-                <p></p>
               </div>
             </div>
           </div>
+      </div>
+      </div>
+      </div>
       </div>
     ) 
 	}
 })// pulls the image for user's profile
 // TODO: photo needs to be queried from db of users'profile photos
 React.render(<ProfilePicture/>, document.getElementById("picnameloc"))
+
+
+// <div class="sidebar left sidebar-size-2 sidebar-offset-0 sidebar-visible-desktop sidebar-visible-mobile sidebar-skin-dark" id="sidebar-menu">
+          // <div data-scrollable>
+          //   <div class="sidebar-block">
+          //      <div class="profile">
+                // <img src="https://31.media.tumblr.com/avatar_b7c10b711491_128.png" alt="people" class="img-circle" />
+                // <h4>R Kelly</h4>
+                // <p>Berkeley, CA</p>
+                // <p>Hi, my name is Robert and I want to develop better habits</p>
+      //          </div>
+      //       </div>
+              
+      //     </div>
+      // </div>
+
+
+
+
+
+
+
+
+
+
 
 
 

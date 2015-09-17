@@ -90,8 +90,13 @@ module.exports = function(app){
       var query = client.query("SELECT habits.habit, count(updates.habit_id) " + 
        "FROM habits " + 
        "INNER JOIN updates " + 
-       "ON habits.habit_id = updates.habit_id " + 
-       "GROUP BY habits.habit;");
+       "ON habits.habit_id = updates.habit_id " +
+       "INNER JOIN users_habits " +
+       "On habits.habit_id = users_habits.habit_id " +
+       "INNER JOIN users " + 
+       "ON users_habits.user_id = users.user_id " +
+       "WHERE users.username = 'rkelly' " +
+       "GROUP BY habits.habit ");
       var rows = [];
       if (err) {
         return console.error('error running query', err);

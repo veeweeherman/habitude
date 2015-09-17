@@ -3,7 +3,7 @@ var ProfilePicture = React.createClass({
     return {username: '',location: ''}
   }, 
   
-  componentDidMount: function(x,y,z) {
+  componentDidMount: function() {
 
     $.ajax({
         type: 'GET',
@@ -29,13 +29,13 @@ var ProfilePicture = React.createClass({
         <p>Hello, {this.state.username}!</p>
         <p>LOCATION: {this.state.location}</p>
           <div className="panel-body">
-                      <div className="expandable expandable-indicator-white expandable-trigger">
-                        <div className="expandable-content">
-                          <p>Aloha! Im Robert and I like to make music.</p>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut autem delectus dolorum necessitatibus neque odio quam quas qui quod soluta? Aliquid eius esse minima.</p>
-                        </div>
-                      </div>
-                    </div>
+            <div className="expandable expandable-indicator-white expandable-trigger">
+              <div className="expandable-content">
+                <p>Aloha! Im Robert and I like to make music.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut autem delectus dolorum necessitatibus neque odio quam quas qui quod soluta? Aliquid eius esse minima.</p>
+              </div>
+            </div>
+          </div>
       </div>
     ) 
 	}

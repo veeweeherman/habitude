@@ -64,12 +64,6 @@ var ActivityFeed = React.createClass({ //parent component
   componentDidMount: function() { // this method fires before the intitial render
     this.loadActivitiesFromServer();
   },
-        	// <table><tbody>
-         //    <tr>
-         //      <td>{activity.username+': '+activity.habit+' at '+activity.update_time+' with '+activity.kudos_count+' kudos'}</td>
-         //      <td><button type="submit" onClick={this.giveKudos.bind(this,activity.update_id)}>THUMBS UP</button></td>
-         //    </tr>
-         //  </tbody></table>
   render: function() {
     var activityNodes = this.state.data.map(function(activity,i,list){ //iterating thru array of objects returned from db query, and gives each activity its own kudos button
       return (
@@ -99,7 +93,6 @@ var ActivityFeed = React.createClass({ //parent component
       
                             <td className="text-right">
                               <a href="#" className="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="Edit"><i className="fa fa-thumbs-o-up"></i></a>
-                              
                             </td>
                           </tr>
                         </tbody>

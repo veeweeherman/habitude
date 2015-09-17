@@ -185,7 +185,7 @@ var HabitForm = React.createClass({ // form to enter new habits
       <input type="text" placeholder="Enter text" ref="habit" />
       <div>
         <select name="Categories" id='something' ref="category">
-        <option value="null">Please select a category for your new Habitude</option>
+        <option value="null">Please select a category</option>
           <option value="Health">Health</option>
           <option value="Fitness">Fitness</option>
           <option value="Addiction">Addiction</option>

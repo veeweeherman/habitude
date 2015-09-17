@@ -86,7 +86,7 @@ var ActivityFeed = React.createClass({ //parent component
                             <th>Date</th>
                             <th>Username</th>
                             <th>Habit</th>
-                            <th className="text-right">Like</th>
+                            <th className="text-right">Kudos</th>
                           </tr>
                         </thead>
                         <tbody id="responsive-table-body">

@@ -1,4 +1,4 @@
-.profilepic {
+/*.profilepic {
   border-radius: 100%;
   margin: auto;
   margin-top: 40%;
@@ -41,7 +41,7 @@ div {
   }
 }
 
-/******************* CSS STYLES FOR BOOTSTRAPPING THE COLUMNS *******************/
+****************** CSS STYLES FOR BOOTSTRAPPING THE COLUMNS ******************
 html,body,.container
 {
     height:100%;
@@ -67,7 +67,7 @@ header
     display: table-row;
 }
 .col-md-3.no-float, .col-md-9.no-float {
-    float: none; /* thanks baxabbit */
+    float: none; /* thanks baxabbit 
 }
 .col-md-3
 {
@@ -92,4 +92,4 @@ header
 }
 #activityfeed {
   margin-top: 50%;
-}
+}*/*/

@@ -108,7 +108,6 @@ var HabitList = React.createClass({ // updates the habits db with new entry and 
       return (
 
         <div className="row">
-           <div className="">
              <div className="page-section-heading"></div>
                 <div className="panel panel-default">
                   <div className="table-responsive">
@@ -129,7 +128,7 @@ var HabitList = React.createClass({ // updates the habits db with new entry and 
 
                         <tbody id="responsive-table-body">
                           <tr>
-                          
+
                            <td></td>
 
                           <td><span className="label label-default"><button type="submit" formMethod="post" onClick={this.updateHabit.bind(this, habit)}>Check-in</button></span></td>
@@ -159,7 +158,6 @@ var HabitList = React.createClass({ // updates the habits db with new entry and 
 
                     </div>
                   </div>
-                </div>
               </div>
         );
     }.bind(this));

@@ -19,17 +19,18 @@
 > [Studies](#http://psychcentral.com/news/2012/05/30/exercising-with-a-partner-boosts-motivation/39421.html) show that working out with another person leads to greater motivation to continue with the habit. Habitude allows users to add a habit and connect with other users who are also working towards adopting new habits. Users can provide daily updates, keeping other "habituders" informed on their progress. The power of Habitude lies in the ability of the Habitude community to give "kudos" to users when a habit is practiced, thus increasing motivation, chances of success and overall fun!
 
 ## Table of Contents ##
- 1. [Team](#team)
- 1. [Requirements](#requirements)
- 1. [Development](#development)
+1. [Team](#team)
+1. [Requirements](#requirements)
+1. [Development](#development)
   1. [Installing Dependencies](#installing-dependencies)
- 1.[Contributing](#contributing)
+1.[Contributing](CONTRIBUTING.MD)
 
 ## Team ##
 ### The Gap Band ###
-  -__Product Owner__: Kim Merino
-  -__Scrum Master__: Vy Cu
-  -__Development Team Members__: Glenn Gonda, Jamil Lawrence, Kim Merino, Vy Cu 
+  - __Product Owner__: Kim Merino
+  - __Scrum Master__: Vy Cu
+  - __Development Team Members__: Glenn Gonda, Jamil Lawrence, Kim Merino, Vy Cu
+
 ![Alt text](http://stream1.gifsoup.com/view1/1129039/gap-band-1-o.gif)
 
 

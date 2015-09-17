@@ -1,52 +1,47 @@
-The Gap Band
+# Habitude #
+> Keeping yourself accountable through community.
 
+## Habitude ##
+> Habitude is a social network site for users that want to learn and build new habits in their daily lives. Studies show that working out with another person leads to greater motivation to continue with the habit. Habitude makes the job a easier and more fun through the power of the social network.
 
-![Alt text](http://stream1.gifsoup.com/view1/1129039/gap-band-1-o.gif)
+## The Benefits ##
+> Habitude is for anyone that wants to be a part of community everywhere they as they adopt new habits in their daily lives. 
 
-![Alt text](http://stream1.gifsoup.com/view1/1129039/gap-band-1-o.gif)
-
-
-# Project Name #
-
-<!-- 
-> This material was originally posted [here](http://www.quora.com/What-is-Amazons-approach-to-product-development-and-product-management). It is reproduced here for posterities sake.
-
-There is an approach called "working backwards" that is widely used at Amazon. They work backwards from the customer, rather than starting with an idea for a product and trying to bolt customers onto it. While working backwards can be applied to any specific product decision, using this approach is especially important when developing new products or features.
-
-For new initiatives a product manager typically starts by writing an internal press release announcing the finished product. The target audience for the press release is the new/updated product's customers, which can be retail customers or internal users of a tool or technology. Internal press releases are centered around the customer problem, how current solutions (internal or external) fail, and how the new product will blow away existing solutions.
-
-If the benefits listed don't sound very interesting or exciting to customers, then perhaps they're not (and shouldn't be built). Instead, the product manager should keep iterating on the press release until they've come up with benefits that actually sound like benefits. Iterating on a press release is a lot less expensive than iterating on the product itself (and quicker!).
-
-If the press release is more than a page and a half, it is probably too long. Keep it simple. 3-4 sentences for most paragraphs. Cut out the fat. Don't make it into a spec. You can accompany the press release with a FAQ that answers all of the other business or execution questions so the press release can stay focused on what the customer gets. My rule of thumb is that if the press release is hard to write, then the product is probably going to suck. Keep working at it until the outline for each paragraph flows. 
-
-Oh, and I also like to write press-releases in what I call "Oprah-speak" for mainstream consumer products. Imagine you're sitting on Oprah's couch and have just explained the product to her, and then you listen as she explains it to her audience. That's "Oprah-speak", not "Geek-speak".
-
-Once the project moves into development, the press release can be used as a touchstone; a guiding light. The product team can ask themselves, "Are we building what is in the press release?" If they find they're spending time building things that aren't in the press release (overbuilding), they need to ask themselves why. This keeps product development focused on achieving the customer benefits and not building extraneous stuff that takes longer to build, takes resources to maintain, and doesn't provide real customer benefit (at least not enough to warrant inclusion in the press release).
- -->
- 
-## Heading ##
-  > Habit TBD: Keeping yourself accountable through community... habit, facet, routine
-
-## Sub-Heading ##
-  > Users looking to solidify habit through community interaction
-
-## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good. TBD is a community of goal oriented go-getters from all over the world. Together, we encourage one another to adopt new habits.
+## What is Habitude? ##
+> Habitude uses the power of social motivatation to encourage users to continue practicing a daily habit. Our community of "habituders" are here to encourage and uplift one another.
 
 ## Problem ##
-  > People who strive to improve themselves need two things: a support group and a way to track their progress 
+> Adopting new habits is never easy. Finding the motivation to go the gym more often, eating better, or not watching TV before going to bed is easily forgotten in our busy lives. In addition, not seeing visible progress in adopting new habits often chips away at the little motivation we have to persist and develop.
 
 ## Solution ##
-  > Allows user to find support and new solutions through building community 
+> [Studies](http://psychcentral.com/news/2012/05/30/exercising-with-a-partner-boosts-motivation/39421.html) show that working out with another person leads to greater motivation to continue with the habit. Habitude allows users to add a habit and connect with other users who are also working towards adopting new habits. Users can provide daily updates, keeping other "habituders" informed on their progress. The power of Habitude lies in the ability of the Habitude community to give "kudos" to users when a habit is practiced, thus increasing motivation, chances of success and overall fun!
 
-## Quote from You ##
-  > A quote from a spokesperson in your company.
+## Table of Contents ##
+1. [Team](#team)
+1. [Requirements](#requirements)
+1. [Development](#development)
+  1. [Installing Dependencies](#installing-dependencies)
+1. [Contributing](CONTRIBUTING.MD)
 
-## How to Get Started ##
-  > Describe how easy it is to get started.
+## Team ##
+### The Gap Band ###
+  - __Product Owner__: Kim Merino
+  - __Scrum Master__: Vy Cu
+  - __Development Team Members__: Glenn Gonda, Jamil Lawrence, Kim Merino, Vy Cu
 
-## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+![Alt text](http://stream1.gifsoup.com/view1/1129039/gap-band-1-o.gif)
 
-## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+
+## Requirements
+- Node 0.10x
+- Express 4.13.3x 
+- Postgresql 9.1.x
+- React 1.1.1x
+- Bootstrap 1.1.1x
+
+## Development
+### Installing Dependencies
+```sh
+npm install
+```
+

@@ -113,6 +113,7 @@ var HabitList = React.createClass({ // updates the habits db with new entry and 
                 <div className="panel panel-default">
                   <div className="table-responsive">
                     <table className="table v-middle">
+
                         <thead>
 
                           <tr>
@@ -128,6 +129,7 @@ var HabitList = React.createClass({ // updates the habits db with new entry and 
 
                         <tbody id="responsive-table-body">
                           <tr>
+                          
                            <td></td>
 
                           <td><span className="label label-default"><button type="submit" formMethod="post" onClick={this.updateHabit.bind(this, habit)}>Check-in</button></span></td>
@@ -137,23 +139,21 @@ var HabitList = React.createClass({ // updates the habits db with new entry and 
                             </Habit>
                           </td>
 
-
                           <td>
-                              <div className="progress">
-                                <div className="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
-                                </div>
+                            <div className="progress">
+                              <div className="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
                               </div>
-                            </td>
+                            </div>
+                          </td>
+
+                          <td className="text-right">
+                            <button type="button" className="btn btn-xs btn-danger" formmethod="post" onClick={this.deleteHabit.bind(this, habit)}>x</button> 
+                          </td>
+
+                          </tr>
 
 
-                            <td className="text-right">
-                            <button type="button" className="btn btn-xs btn-danger" formmethod="post" onClick={this.deleteHabit.bind(this, habit)}>x</button>
-                              
 
-
-                              
-                            </td>
-                             </tr>
                         </tbody>
                       </table>
 

@@ -24,8 +24,6 @@ var ProfilePicture = React.createClass({
   },
 	render: function(){
 
-    //ENTIRE PROF SIDEBAR GOES HERE
-
 		return (
 			<div className="sidebar left sidebar-size-2 sidebar-offset-0 sidebar-visible-desktop sidebar-visible-mobile sidebar-skin-dark" id="sidebar-menu">
         <div data-scrollable>
@@ -42,7 +40,7 @@ var ProfilePicture = React.createClass({
               </div>
             </div>
           </div>
-      </div>
+        </div>
       </div>
       </div>
       </div>
@@ -51,32 +49,4 @@ var ProfilePicture = React.createClass({
 })// pulls the image for user's profile
 // TODO: photo needs to be queried from db of users'profile photos
 React.render(<ProfilePicture/>, document.getElementById("picnameloc"))
-
-
-// <div class="sidebar left sidebar-size-2 sidebar-offset-0 sidebar-visible-desktop sidebar-visible-mobile sidebar-skin-dark" id="sidebar-menu">
-          // <div data-scrollable>
-          //   <div class="sidebar-block">
-          //      <div class="profile">
-                // <img src="https://31.media.tumblr.com/avatar_b7c10b711491_128.png" alt="people" class="img-circle" />
-                // <h4>R Kelly</h4>
-                // <p>Berkeley, CA</p>
-                // <p>Hi, my name is Robert and I want to develop better habits</p>
-      //          </div>
-      //       </div>
-              
-      //     </div>
-      // </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 

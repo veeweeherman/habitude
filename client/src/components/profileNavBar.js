@@ -1,6 +1,7 @@
 var ProfNav = React.createClass({
   render: function() {
     return (
+      <div>
       <div className="navbar navbar-main navbar-primary navbar-fixed-top" role="navigation">
             <div className="container-fluid">
 
@@ -38,8 +39,28 @@ var ProfNav = React.createClass({
             </div>
           </div>
 
+          <div className="st-pusher" id="content">
+      <div className="st-content">
+        <div className="st-content-inner">
+          <nav className="navbar navbar-subnav navbar-static-top" role="navigation">
+            <div className="container-fluid">
+              <div className="navbar-header">
+                <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#subnav">
+                  <span className="sr-only"></span>
+                  <span className="fa fa-ellipsis-h"></span>
+                </button>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+    </div>
+
     )
   }
 });
 
 React.render(<ProfNav/>, document.getElementById('profnavbar'))
+
+

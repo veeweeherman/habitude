@@ -25576,7 +25576,7 @@ html.st-layout .st-content {
 }
 .st-container {
   position: relative;
-  overflow: hidden;
+  /*overflow: hidden;*/
 }
 .top-navbar .st-container,
 .ls-top-navbar .st-container {
@@ -29798,3 +29798,4 @@ fieldset[disabled] .sidebar.sidebar-skin-white-brown .btn-default.active {
 [data-pagination="true"][data-pagination-position*="BOTTOM"] + .map-overlay-top {
   top: 0;
 }
+

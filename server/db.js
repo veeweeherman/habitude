@@ -54,6 +54,7 @@ module.exports = function(app){
 
     pg.connect(databaseURL, function(err, client, done){
       var habitIDQuery = "(SELECT DISTINCT habits.habit_id FROM habits " + 
+
        "WHERE habits.habit = '" + habit + "')"; 
 
       var userIDQuery = "(SELECT DISTINCT users.user_id FROM users " + 
@@ -180,7 +181,9 @@ module.exports = function(app){
   // SHOWS ACTIVITY FEED FROM OTHER USERS IN THE SAME CATEGORY
   app.get('/api/activityFeed', function (req, res){
 
+
     var user = 'Vy';
+
 
     pg.connect(databaseURL, function (err, client, done){
 

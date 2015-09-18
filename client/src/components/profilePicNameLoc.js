@@ -31,6 +31,7 @@ var ProfilePicture = React.createClass({
         <div data-scrollable>
           <div className="sidebar-block">
             <div className="profile">  
+              <h1>.</h1>
               <img className="img-circle" src={'http://thesource.com/wp-content/uploads/2015/05/R_-Kelly-new-album-buffet-110x110.jpg'} />
               <h4>{this.state.username}</h4>
               <p>{this.state.location}</p>

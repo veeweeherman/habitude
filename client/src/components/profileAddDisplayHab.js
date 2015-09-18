@@ -1,4 +1,4 @@
-var Habit = React.createClass({ // 
+var Habit = React.createClass({
   render: function() {
     var rawMarkup = marked(this.props.children.toString(), {sanitize: true});
     return (
@@ -129,7 +129,7 @@ var HabitList = React.createClass({ // updates the habits db with new entry and 
 
                            <td></td>
 
-                          <td><span className="label label-default"><button type="submit" formMethod="post" onClick={this.updateHabit.bind(this, habit)}>Check-in</button></span></td>
+                          <td><span className="label label-default"><button className="btn btn-success" type="submit" formMethod="post" onClick={this.updateHabit.bind(this, habit)}>Check-in</button></span></td>
 
                           <td><Habit user_id={habit.user_id} key={index}>
                             {habit.habit+' '+(habit.count-1)} 

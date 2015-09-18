@@ -1,3 +1,12 @@
+#adddisplayhab {
+  margin-left: 25em;
+}
+
+#activityfeed {
+  margin-left: 25em;
+}
+
+
 /*.profilepic {
   border-radius: 100%;
   margin: auto;
@@ -39,10 +48,10 @@ div {
     color: darken(#8e44ad, 10%);
     font-weight: bold;
   }
-}
+}*/
 
-****************** CSS STYLES FOR BOOTSTRAPPING THE COLUMNS ******************
-html,body,.container
+/******************* CSS STYLES FOR BOOTSTRAPPING THE COLUMNS *******************/
+/*html,body,.container
 {
     height:100%;
 }
@@ -67,7 +76,7 @@ header
     display: table-row;
 }
 .col-md-3.no-float, .col-md-9.no-float {
-    float: none; /* thanks baxabbit 
+    float: none; 
 }
 .col-md-3
 {
@@ -80,9 +89,9 @@ header
     display: table-cell;
     background: yellow;
     width: 75%;
-}
+}*/
 
-/******************** PUSHES THE PAGE TITLE DOWN BELOW THE NAV BAR *******************/
+/******************** PUSHES THE PAGE TITLE DOWN BELOW THE NAV BAR ******************
 .landingPageSignUp {
   margin-top: 10%;
 }
@@ -92,4 +101,4 @@ header
 }
 #activityfeed {
   margin-top: 50%;
-}*/*/
+}*/

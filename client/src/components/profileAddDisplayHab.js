@@ -32,9 +32,6 @@ var ProfileAddDisplayHab = React.createClass({ // parent component
     var habits = this.state.data; // state of the data before the new habit is added
     var newHabits = habits.concat([habitCategory]); // add the new data to the data object
     this.setState({data: newHabits}); // re-set the state to include both the old and new data
-    console.log('*************', habitCategory);
-
-    // in the dollowing AJAX object, the data is set to the value of the new object that is submitted by the user
     $.ajax({
       url: '/api/habits',
       dataType: 'json',

@@ -21,8 +21,7 @@ var Input = React.createClass ({ // component that creates input fields (ie. use
     submit: function (e){
       var self
       e.preventDefault()
-      self = this
-      console.log(this.state);
+      self = this;
       var data = {
         username: this.state.username,
         password: this.state.password

@@ -3,7 +3,7 @@ var ProfilePicture = React.createClass({
     return {username: '',location: ''}
   }, 
   
-  componentDidMount: function(x,y,z) {
+  componentDidMount: function() {
 
     $.ajax({
         type: 'GET',
@@ -23,18 +23,30 @@ var ProfilePicture = React.createClass({
     })
   },
 	render: function(){
+
 		return (
-			<div>
-        <img className="profilepic" src={'http://40.media.tumblr.com/tumblr_makm5yaqVk1r8b83ro1_500.jpg'} />
-        <p>Hello, {this.state.username}!</p>
-        <p>LOCATION: {this.state.location}</p>
+			<div className="sidebar left sidebar-size-2 sidebar-offset-0 sidebar-visible-desktop sidebar-visible-mobile sidebar-skin-dark" id="sidebar-menu">
+        <div data-scrollable>
+          <div className="sidebar-block">
+            <div className="profile">  
+              <h1>.</h1>
+              <img className="img-circle" src={'http://thesource.com/wp-content/uploads/2015/05/R_-Kelly-new-album-buffet-110x110.jpg'} />
+              <h4>{this.state.username}</h4>
+              <p>{this.state.location}</p>
+              <p>Hello from the profilepicname component</p>
+               <div className="panel-body">
+                  <div className="expandable expandable-indicator-white expandable-trigger">
+              <div className="expandable-content">
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    ) // pulls the image for user's profile
+      </div>
+      </div>
+    ) 
 	}
-})
+})// pulls the image for user's profile
 // TODO: photo needs to be queried from db of users'profile photos
 React.render(<ProfilePicture/>, document.getElementById("picnameloc"))
-
-
-
 

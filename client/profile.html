@@ -1,69 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html class="st-layout ls-top-navbar show-sidebar sidebar-l2" lang="en">
 <head>
-    <meta charset="UTF-8" />
     <title>HABITUDE</title>
-    <link href='https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700|Josefin+Sans:400,400italic' rel='stylesheet' type='text/css'>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href='https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700|Josefin+Sans:400,400italic' rel='stylesheet' type='text/css'> -->
     <link rel="stylesheet" type"text/css" href="src/styles/bootstrap.min.css">
+    <link rel="stylesheet" type"text/css" href="css/vendor/all.css">
+    <link rel="stylesheet" type"text/css" href="css/app/app.css">
     <link rel="stylesheet" type="text/css" href="src/styles/styles.css">
     <link rel="icon" type="image/ico" href="src/assets/favicon.ico">
 </head>
 <body>
 
-<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-              
-                  <a class="navbar-brand page-scroll" href="#page-top">
-                  <img src="src/assets/habitude_logo.png" width="32" alt="reflectiv"></a>
-              
-            </div>
+<!--START ST CONTAINER-->
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a class="page-scroll" href="#home">Home</a>
-                    </li>
-                    <!-- <li>
-                        <a class="page-scroll" href="#activityfeed">Activity Feed</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#explore">Explore</a>
-                    </li> -->
-                    <li>
-                        <a class="page-scroll" href="../about.html">About</a>
-                    </li>
-                     <!-- <li>
-                        <a class="page-scroll" href="/index.html">Logout</a> --> <!--re routes user to the signin/login page
-                    </li> -->
-                </ul>
-            </div>
-
-        </div>
-
-    </nav>
+<div class="st-container">
 
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-3 no-float" id="picnameloc"></div>
-    <div class="col-md-3 no-float" id="adddisplayhab">
-    </div>
-    <div class="col-md-3 no-float" id="activityfeed"></div>
-  </div>
+<!-- ####################### REACT COMPONENTS GET RENDERED HERE @@@@@@@@@@@@@@@@@@@@@@@ -->
+<!-- ####################### REACT COMPONENTS GET RENDERED HERE @@@@@@@@@@@@@@@@@@@@@@@ -->
+
+
+    <div id="profnavbar"></div>
+    <div id="picnameloc"></div>
+    <div class="col-md-9" id="adddisplayhab"></div>
+    <div class="col-md-4" id="activityfeed"></div>
+
+
 </div>
-  <!-- <div id="checkincurrenthab"></div> 
-  <div id="habprogress"></div>
- -->
-
 
 
 
@@ -72,6 +37,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"></script>
 
+  <script type="text/jsx" src="src/components/profileNavBar.js"></script>
   <script type="text/jsx" src="src/components/profilePicNameLoc.js"> </script>
   <script type="text/jsx" src="src/components/profileAddDisplayHab.js"></script>
   <script type="text/jsx" src="src/components/activityFeed.js"></script>
@@ -84,6 +50,9 @@
   <script type="text/jsx" src="components/testAjax.js"></script> -->
 
 
+      <!-- <footer class="footer">
+        <strong>Habitude</strong> v1.0.0
+      </footer> -->
 </body>
 </html>
 

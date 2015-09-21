@@ -60,13 +60,41 @@ var ActivityFeed = React.createClass({ //parent component
   render: function() {
     var activityNodes = this.state.data.map(function(activity,i,list){ //iterating thru array of objects returned from db query, and gives each activity its own kudos button
       return (
+        
+          <div className="row">
+                <div>
+                  <div className="panel panel-default">
+                    <div className="table-responsive">
+                      <table className="table v-middle">
+                        <thead>
+                          <tr>
+                            <th width="20">
+                            </th>
+                            <th>Date</th>
+                            <th>Username</th>
+                            <th>Habit</th>
+                            <th className="text-right">Kudos</th>
+                          </tr>
+                        </thead>
+                        <tbody id="responsive-table-body">
+                          <tr>
+                            <td>
+                            </td>
+                            <td><span className="label label-default">{activity.update_time}</span></td>
+                            <td>{activity.username}</td>
+                            <td>{activity.habit}</td>
       
-          <table><tbody>
-            <tr>
-              <td>{activity.username+': '+activity.habit+' at '+activity.update_time}</td>
-              <td><Counter/></td>
-            </tr>
-          </tbody></table>
+                            <td className="text-right">
+                              <a href="#" className="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="Edit"><i className="fa fa-thumbs-o-up"></i></a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
        );
     }.bind(this));
     return (

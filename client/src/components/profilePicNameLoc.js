@@ -30,7 +30,7 @@ var ProfilePicture = React.createClass({
           <div className="sidebar-block">
             <div className="profile">  
               <h1>.</h1>
-              <img className="img-circle" src={''} />
+              <img className="img-circle" src={'http://i.imgur.com/eWVQuDJ.png'} />
               <h4>{this.state.username}</h4>
               <p>{this.state.location}</p>
               <p>Hello from the profilepicname component</p>

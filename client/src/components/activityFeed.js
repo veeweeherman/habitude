@@ -85,7 +85,7 @@ var ActivityFeed = React.createClass({ //parent component
                             <td>{activity.habit}</td>
       
                             <td className="text-right">
-                              <a href="#" className="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="Edit"><i className="fa fa-thumbs-o-up"></i></a>
+                              <a href="#" className="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">+1</a>
                             </td>
                           </tr>
                         </tbody>

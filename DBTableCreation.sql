@@ -8,8 +8,20 @@ CREATE TABLE users
   user_id serial NOT NULL PRIMARY KEY,
   username character varying(200),
   password character varying(50),
-  location character varying(200) DEFAULT 'Berkeley'
+  location character varying(200) DEFAULT 'Berkeley, CA'
 );
+
+INSERT INTO users (username, password)
+VALUES ('vy', '1');
+
+INSERT INTO users (username, password)
+VALUES ('jamil', '2');
+
+INSERT INTO users (username, password)
+VALUES ('kim', '3');
+
+INSERT INTO users (username, password)
+VALUES ('glenn', '4');
 
 CREATE TABLE habits
 (

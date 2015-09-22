@@ -10,7 +10,11 @@ var Habit = React.createClass({
   }
 });
 
-var ProfileAddDisplayHab = React.createClass({ // parent component
+//parent component
+  //url references url declared in React.render ('/api/updateHabit')
+  //on success, the state will be reset with new data from the db
+
+var ProfileAddDisplayHab = React.createClass({ 
   loadHabitsFromServer: function() {
     $.ajax({
       url: this.props.url,

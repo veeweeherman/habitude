@@ -180,8 +180,8 @@ var HabitForm = React.createClass({ // form to enter new habits
   render: function() {
     return (
       <form className="habitForm" onSubmit={this.handleSubmit}>
-      <input type="text" placeholder="Enter text" ref="habit" />
-      <div>
+      <input type="text" placeholder="Enter a new habit" ref="habit" />
+      <div class="dropdown">
         <select name="Categories" id='something' ref="category">
         <option value="null">Please select a category</option>
           <option value="Exercise">Exercise</option>

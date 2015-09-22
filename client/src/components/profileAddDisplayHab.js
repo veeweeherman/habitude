@@ -137,10 +137,7 @@ var HabitList = React.createClass({ // updates the habits db with new entry and 
                           </td>
 
                           <td>
-                            <div className="progress">
-                              <div className="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
-                              </div>
-                            </div>
+                            <div className="progress"></div>
                           </td>
 
                           <td className="text-right">
@@ -164,6 +161,8 @@ var HabitList = React.createClass({ // updates the habits db with new entry and 
   }
 });
 
+                              // <div className="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+                              // </div>
 
 var HabitForm = React.createClass({ // form to enter new habits
   handleSubmit: function(e) {

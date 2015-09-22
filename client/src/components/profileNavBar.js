@@ -26,7 +26,7 @@ var ProfNav = React.createClass({
                  
                   <li className="dropdown">
                     <a href="#" className="dropdown-toggle user" data-toggle="dropdown">
-                      <img src="http://i.imgur.com/eWVQuDJ.png" alt="Vy" className="img-circle" width="40" />Vy<span className="caret"></span>
+                      <img src="http://i.imgur.com/eWVQuDJ.png" alt="Vy" className="img-circle" width="40" /> Vy <span className="caret"></span>
                     </a>
                     <ul className="dropdown-menu" role="menu">
                       <li className="active"><a href="user-private-profile.html">Profile</a></li>

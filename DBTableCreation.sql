@@ -12,16 +12,16 @@ CREATE TABLE users
 );
 
 INSERT INTO users (username, password)
-VALUES ('vy', '1');
+VALUES ('Vy', '1');
 
 INSERT INTO users (username, password)
-VALUES ('jamil', '2');
+VALUES ('Jamil', '2');
 
 INSERT INTO users (username, password)
-VALUES ('kim', '3');
+VALUES ('Kim', '3');
 
 INSERT INTO users (username, password)
-VALUES ('glenn', '4');
+VALUES ('Glenn', '4');
 
 CREATE TABLE habits
 (

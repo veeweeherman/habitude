@@ -107,10 +107,28 @@ header
 }
 #activityfeed {
   margin-top: 50%;
-<<<<<<< HEAD
+
 }*/
 
+.text-container{
+  margin: 10px;
+}
 
 .aboutHabitude{
-  margin-top: 10%;
+  margin-top: 5%;
 }
+
+.blog a{
+  margin: 0 10px;
+}
+
+.names{
+  text-align: center;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+
+
+
+

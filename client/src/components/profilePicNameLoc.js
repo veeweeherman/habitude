@@ -7,7 +7,7 @@ var ProfilePicture = React.createClass({
 
     $.ajax({
         type: 'GET',
-        url: '/api/nameAndLoc', /* NEEDS THE GET REQUEST FOR USERNAME AND LOCATION */
+        url: '/api/nameAndLoc', 
         dataType: 'json',
         success: function(data) { // After the query has returned the object, set the state's keys and values to equal the values needed from the db-query-object VERY IMPORTANT
           this.setState({
@@ -46,7 +46,9 @@ var ProfilePicture = React.createClass({
       </div>
     ) 
 	}
+
 })// pulls the image for user's profile
 // TODO: photo needs to be queried from db of users'profile photos
+
 React.render(<ProfilePicture/>, document.getElementById("picnameloc"))
 

@@ -133,7 +133,7 @@ var HabitList = React.createClass({ // updates the habits db with new entry and 
                           <td><button className="btn btn-success" type="submit" formMethod="post" onClick={this.updateHabit.bind(this, habit)}>Check-in</button></td>
 
                           <td><Habit user_id={habit.user_id} key={index}>
-                            {habit.habit+' '+(habit.count-1)} 
+                            {habit.habit} 
                             </Habit>
                           </td>
 

@@ -97,6 +97,10 @@ var HabitList = React.createClass({ // updates the habits db with new entry and 
     });
   },
 
+  // progressNumber: function(habitCount) {
+  //   return Math.round(habitCount / 100) * 100;
+  // },
+
   render: function() {
 
     var habitNodes = this.props.data.map(function(habit, index) {
@@ -137,7 +141,7 @@ var HabitList = React.createClass({ // updates the habits db with new entry and 
                           </td>
 
                           <td>
-                            <div className="progress"></div>
+                            <center><div className="progress">{Math.round((habit.count-1) * 100/ 30, -2) +'%'}</div></center>
                           </td>
 
                           <td className="text-right">

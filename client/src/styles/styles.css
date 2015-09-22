@@ -6,6 +6,11 @@
   margin-left: 15.5em;
 }
 
+.thumb{
+
+   border:1.5px solid black;
+   border-radius: 15%
+}
 
 /*.profilepic {
   border-radius: 100%;

@@ -97,6 +97,10 @@ var HabitList = React.createClass({ // updates the habits db with new entry and 
     });
   },
 
+  // progressNumber: function(habitCount) {
+  //   return Math.round(habitCount / 100) * 100;
+  // },
+
   render: function() {
 
     var habitNodes = this.props.data.map(function(habit, index) {
@@ -129,7 +133,7 @@ var HabitList = React.createClass({ // updates the habits db with new entry and 
 
                            <td></td>
 
-                          <td><span className="label label-default"><button className="btn btn-success" type="submit" formMethod="post" onClick={this.updateHabit.bind(this, habit)}>Check-in</button></span></td>
+                          <td><button className="btn btn-success" type="submit" formMethod="post" onClick={this.updateHabit.bind(this, habit)}>Check-in</button></td>
 
                           <td><Habit user_id={habit.user_id} key={index}>
                             {habit.habit+' '+(habit.count-1)} 
@@ -137,10 +141,7 @@ var HabitList = React.createClass({ // updates the habits db with new entry and 
                           </td>
 
                           <td>
-                            <div className="progress">
-                              <div className="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
-                              </div>
-                            </div>
+                            <center><div className="progress">{Math.round((habit.count-1) * 100/ 30, -2) +'%'}</div></center>
                           </td>
 
                           <td className="text-right">
@@ -148,10 +149,8 @@ var HabitList = React.createClass({ // updates the habits db with new entry and 
                           </td>
 
                           </tr>
-
                       </tbody>
                       </table>
-
                     </div>
                   </div>
               </div>
@@ -163,7 +162,6 @@ var HabitList = React.createClass({ // updates the habits db with new entry and 
       );
   }
 });
-
 
 var HabitForm = React.createClass({ // form to enter new habits
   handleSubmit: function(e) {
@@ -185,10 +183,14 @@ var HabitForm = React.createClass({ // form to enter new habits
       <div>
         <select name="Categories" id='something' ref="category">
         <option value="null">Please select a category</option>
-          <option value="Health">Health</option>
-          <option value="Fitness">Fitness</option>
-          <option value="Addiction">Addiction</option>
-          <option value="Overall Cool Catness">Overall Cool Catness</option>
+          <option value="Exercise">Exercise</option>
+          <option value="Nutrition">Nutrition</option>
+          <option value="Relationship">Relationship</option>
+          <option value="Finance">Finance</option>
+          <option value="Professional">Professional</option>
+          <option value="Learning">Learning</option>
+          <option value="Relaxation">Relaxation</option>
+          <option value="Kick a Habit">Kick a Habit</option>
         </select>
       </div>
       <input type="submit" value="Post" />

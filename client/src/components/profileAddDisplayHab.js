@@ -188,10 +188,14 @@ var HabitForm = React.createClass({ // form to enter new habits
       <div>
         <select name="Categories" id='something' ref="category">
         <option value="null">Please select a category</option>
-          <option value="Health">Health</option>
-          <option value="Fitness">Fitness</option>
-          <option value="Addiction">Addiction</option>
-          <option value="Overall Cool Catness">Overall Cool Catness</option>
+          <option value="Exercise">Exercise</option>
+          <option value="Nutrition">Nutrition</option>
+          <option value="Relationship">Relationship</option>
+          <option value="Finance">Finance</option>
+          <option value="Professional">Professional</option>
+          <option value="Learning">Learning</option>
+          <option value="Relaxation">Relaxation</option>
+          <option value="Kick a Habit">Kick a Habit</option>
         </select>
       </div>
       <input type="submit" value="Post" />

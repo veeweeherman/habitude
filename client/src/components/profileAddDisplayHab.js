@@ -10,7 +10,11 @@ var Habit = React.createClass({
   }
 });
 
-var ProfileAddDisplayHab = React.createClass({ // parent component
+//parent component
+  //url references url declared in React.render ('/api/updateHabit')
+  //on success, the state will be reset with new data from the db
+
+var ProfileAddDisplayHab = React.createClass({ 
   loadHabitsFromServer: function() {
     $.ajax({
       url: this.props.url,
@@ -133,7 +137,7 @@ var HabitList = React.createClass({ // updates the habits db with new entry and 
                           <td><button className="btn btn-success" type="submit" formMethod="post" onClick={this.updateHabit.bind(this, habit)}>Check-in</button></td>
 
                           <td><Habit user_id={habit.user_id} key={index}>
-                            {habit.habit+' '+(habit.count-1)} 
+                            {habit.habit} 
                             </Habit>
                           </td>
 
@@ -176,8 +180,8 @@ var HabitForm = React.createClass({ // form to enter new habits
   render: function() {
     return (
       <form className="habitForm" onSubmit={this.handleSubmit}>
-      <input type="text" placeholder="Enter text" ref="habit" />
-      <div>
+      <input type="text" placeholder="Enter a new habit" ref="habit" />
+      <div class="dropdown">
         <select name="Categories" id='something' ref="category">
         <option value="null">Please select a category</option>
           <option value="Exercise">Exercise</option>

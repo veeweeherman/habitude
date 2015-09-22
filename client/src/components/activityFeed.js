@@ -12,12 +12,13 @@ var Counter = React.createClass({ // child component, see https://scotch.io/tuto
   render: function(){
     return (
       <div className="count">
-        <p>with {this.state.count} kudos</p>
-        <button type="button" onClick={this.incrementCount}>ThumbsUp</button>
+        
+        {this.state.count}  <input type="image" className="thumb" onClick={this.incrementCount} src="https://www.emojibase.com/resources/img/emojis/android/1f44d.png" alt="Submit" width="20" height="20"/>
       </div>
     );
   }
 });
+        // <p>{this.state.count} kudos</p>
 
 var ActivityFeed = React.createClass({ //parent component
 
@@ -80,12 +81,12 @@ var ActivityFeed = React.createClass({ //parent component
                           <tr>
                             <td>
                             </td>
-                            <td><span className="label label-default">{activity.update_time}</span></td>
+                            <td><span className="label label-default">{(new Date(activity.update_time)).toString().substring(0,24)}</span></td>
                             <td>{activity.username}</td>
                             <td>{activity.habit}</td>
       
                             <td className="text-right">
-                              <a href="#" className="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">+1</a>
+                              <Counter/>
                             </td>
                           </tr>
                         </tbody>
@@ -103,6 +104,7 @@ var ActivityFeed = React.createClass({ //parent component
   }
 })
 
+                              // <a href="#" className="btn btn-default btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">+1</a>
 React.render(<ActivityFeed />, document.getElementById('activityfeed'))
 
 /*************************************************

@@ -47,7 +47,7 @@ module.exports = function(app){
     // UNCOMMENT THE LINE BELOW AND ADD THE USER FROM YOUR TEST DATABASE HERE
     // var user = 'R Kelly'; 
 
-    var user = 'vy'; 
+    var user = 'Vy'; 
 
     pg.connect(databaseURL, function(err, client, done){
 
@@ -95,7 +95,7 @@ module.exports = function(app){
        "On habits.habit_id = users_habits.habit_id " +
        "INNER JOIN users " + 
        "ON users_habits.user_id = users.user_id " +
-       "WHERE users.username = 'vy' " +
+       "WHERE users.username = 'Vy' " +
        "GROUP BY habits.habit ");
       var rows = [];
       if (err) {
@@ -188,7 +188,7 @@ module.exports = function(app){
 
   // SHOWS ACTIVITY FEED FROM OTHER USERS IN THE SAME CATEGORY
   app.get('/api/activityFeed', function (req, res){
-    var user = 'vy';
+    var user = 'Vy';
     pg.connect(databaseURL, function (err, client, done){
 
       var getCategories = "(SELECT DISTINCT habits.category "+

@@ -10,6 +10,13 @@ module.exports = function(app){
   app.use(bodyParser.urlencoded({extended:false}));
 
   //========================================================//
+  //   Routes homepage to user profile                      //
+  //========================================================//
+  app.get('/', function(req, res){
+   res.redirect('/profile.html');
+  });
+
+  //========================================================//
   //   Database Queries                                     //
   //========================================================//
   // ALLOWS USER TO SIGNUP

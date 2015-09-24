@@ -11,14 +11,14 @@ var ProfNav = React.createClass({
                 <a href="#sidebar-menu" data-effect="st-effect-1" data-toggle="sidebar-menu" className="toggle pull-left visible-xs"><i className="fa fa-ellipsis-v"></i></a>
                 
                 <a href="#sidebar-chat" data-toggle="sidebar-menu" data-effect="st-effect-1" className="toggle pull-right visible-xs"><i className="fa fa-comments"></i></a>
-                <a className="navbar-brand" href="index.html">Habitude</a>
+                <a className="navbar-brand" href="profile.html">Habitude</a>
               </div>
 
 
 
               <div className="collapse navbar-collapse" id="main-nav">
                 <ul className="nav navbar-nav">
-                  <li><a href="../../../index.html">About</a></li>
+                  <li><a href="../../../about.html">About</a></li>
                 
                  
                 </ul>

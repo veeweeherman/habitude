@@ -4,6 +4,8 @@
 ## Habitude ##
 > Habitude is a social network site for users that want to learn and build new habits in their daily lives. Studies show that working out with another person leads to greater motivation to continue with the habit. Habitude makes the job a easier and more fun through the power of the social network.
 
+![Alt text](https://github.com/dafabulousteach/habitude/blob/master/appScreenShot.png)
+
 ## The Benefits ##
 > Habitude is for anyone that wants to be a part of community everywhere they as they adopt new habits in their daily lives. 
 
